@@ -1,2 +1,4 @@
 build/*.js
 config/*.js
+src/assets/css/materialize.min.css
+src/assets/js/materialize.js
