@@ -1,0 +1,27 @@
+nav {
+  background-color: #990000;
+}
+
+.nav-wrapper .input-field input[type=search] {
+  height: 56px;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 601px) {
+
+  .nav-wrapper .input-field input[type=search] {
+    height: 64px;
+  }
+
+  .brand-logo {
+    left: 0.5rem;
+  }
+}
+
+nav .input-field label {
+  top: -9px;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #990000;
+}

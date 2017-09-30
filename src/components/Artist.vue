@@ -35,6 +35,3 @@
       </div>
     </div>
 </template>
-
-<style src="@/assets/css/materialize.min.css">
-</style>
