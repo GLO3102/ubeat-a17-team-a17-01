@@ -11,7 +11,7 @@
         <span>
           ITunes Page Link :
           <a target="_blank" href="https://itunes.apple.com/ca/artist/michael-jackson/id32940">
-            <img width="40" src="../assets/icons/ituneslogo.jpg" />
+            <img width="2%" src="../assets/icons/ituneslogo.jpg" />
           </a>
         </span>
       </div>

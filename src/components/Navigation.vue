@@ -6,7 +6,7 @@
 
       <router-link to="/" class="brand-logo left hide-on-small-only">UBeat</router-link>
       <router-link to="/" class="brand-logo hide-on-med-and-up">UBeat</router-link>
-      <a href="#" data-activates="mobile-menu" class="button-collapse hide-on-med-only"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="mobile-menu" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
 
       <ul id="nav-mobile" class="right hide-on-small-only">
         <li>
