@@ -21,20 +21,17 @@
         <ul class="collection with-header">
           <li class="collection-item">Got to Be There (1972)</li>
           <li class="collection-item">Ben (1972)</li>
-          <li class="collection-item">Music and Me (1973)</li>
-          <li class="collection-item">forever, Michael (1975)</li>
-          <li class="collection-item">Off the Wall (1979)</li>
-          <li class="collection-item">Thriller (1982)</li>
-          <li class="collection-item">Bad (1987)</li>
-          <li class="collection-item">Dangerous (1991)</li>
-          <li class="collection-item">HIStory – Past, Present, and Future: Book 1 (1995)</li>
-          <li class="collection-item">Invincible</li>
-          <li class="collection-item">Michael (2010)</li>
-          <li class="collection-item">Xscape (2014)</li>
-        </ul>
-      </div>
-    </div>
+<li class="collection-item">Music and Me (1973)</li>
+<li class="collection-item">forever, Michael (1975)</li>
+<li class="collection-item">Off the Wall (1979)</li>
+<li class="collection-item">Thriller (1982)</li>
+<li class="collection-item">Bad (1987)</li>
+<li class="collection-item">Dangerous (1991)</li>
+<li class="collection-item">HIStory – Past, Present, and Future: Book 1 (1995)</li>
+<li class="collection-item">Invincible</li>
+<li class="collection-item">Michael (2010)</li>
+<li class="collection-item">Xscape (2014)</li>
+</ul>
+</div>
+</div>
 </template>
-
-<style src="@/assets/css/materialize.min.css">
-</style>
