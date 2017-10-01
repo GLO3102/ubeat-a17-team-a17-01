@@ -1,0 +1,51 @@
+.playlist-information {
+  display: flex;
+  justify-content: space-around;
+}
+
+.responsive-img.playlist-img {
+  margin: 20px auto;
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.playlist-description {
+  margin: 35px;
+}
+
+.track-number {
+  position: absolute;
+  left: 30px;
+}
+
+.collection.tracks-list .collection-item.avatar {
+  min-height: inherit;
+}
+
+.collection.tracks-list .collection-item.avatar.track {
+  cursor: pointer;
+}
+
+.collection .collection-item.avatar .secondary-content.track-time {
+  color: black;
+}
+
+@media screen and (max-width: 992px) {
+  .responsive-img.playlist-img {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .playlist-information {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+
+.play-pause-icon {
+  display: none;
+  position: absolute;
+  left: 22px;
+}
