@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="section">
-        <img  src="../assets/icons/homePicture.jpg" width="50%" alt="homePicture" />
+        <img  src="../assets/img/homePicture.jpg" width="50%" alt="homePicture" />
         <h3>Home Page</h3>
         <div class="divider"></div>
         <div class="section">
