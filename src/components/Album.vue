@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row playlist-information">
-      <div class="album-sub-information">
+      <div class="playlist-sub-information">
         <h3>Bad</h3>
         <h5>Michael Jackson</h5>
         <div class="playlist-description">
