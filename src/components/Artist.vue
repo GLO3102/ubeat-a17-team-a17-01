@@ -19,18 +19,18 @@
       <div class="section">
         <h5 >Album List</h5>
         <ul class="collection with-header">
-          <li class="collection-item">Got to Be There (1972)</li>
-          <li class="collection-item">Ben (1972)</li>
-          <li class="collection-item">Music and Me (1973)</li>
-          <li class="collection-item">forever, Michael (1975)</li>
-          <li class="collection-item">Off the Wall (1979)</li>
-          <li class="collection-item">Thriller (1982)</li>
-          <li class="collection-item">Bad (1987)</li>
-          <li class="collection-item">Dangerous (1991)</li>
-          <li class="collection-item">HIStory – Past, Present, and Future: Book 1 (1995)</li>
-          <li class="collection-item">Invincible</li>
-          <li class="collection-item">Michael (2010)</li>
-          <li class="collection-item">Xscape (2014)</li>
+          <li class="collection-item"><router-link to="">Got to Be There (1972)</router-link></li>
+          <li class="collection-item"><router-link to="">Ben (1972)</router-link></li>
+          <li class="collection-item"><router-link to="">Music and Me (1973)</router-link></li>
+          <li class="collection-item"><router-link to="">forever, Michael (1975)</router-link></li>
+          <li class="collection-item"><router-link to="">Off the Wall (1979)</router-link></li>
+          <li class="collection-item"><router-link to="">Thriller (1982)</router-link></li>
+          <li class="collection-item"><router-link to="/album">Bad (1987)</router-link></li>
+          <li class="collection-item"><router-link to="">Dangerous (1991)</router-link></li>
+          <li class="collection-item"><router-link to="">HIStory – Past, Present, and Future: Book 1 (1995)</router-link></li>
+          <li class="collection-item"><router-link to="">Invincible</router-link></li>
+          <li class="collection-item"><router-link to="">Michael (2010)</router-link></li>
+          <li class="collection-item"><router-link to="">Xscape (2014)</router-link></li>
         </ul>
       </div>
     </div>

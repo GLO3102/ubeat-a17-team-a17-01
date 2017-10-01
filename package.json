@@ -12,9 +12,6 @@
   "dependencies": {
     "materialize-css": "^0.100.2",
     "vue": "^2.4.2",
-    "vue-materials": "^1.0.7-rc.7",
-    "vue-parallax": "^1.1.1",
-    "vue-parallaxy": "^1.0.3",
     "vue-router": "^2.7.0"
   },
   "devDependencies": {

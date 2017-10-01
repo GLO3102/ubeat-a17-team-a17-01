@@ -1,3 +1,4 @@
-#index-banner .container {
-  color: #990000;
+#index-banner {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: lightgrey;
 }

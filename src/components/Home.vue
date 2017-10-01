@@ -12,9 +12,7 @@
 
         </div>
       </div>
-      <parallax>
-        <img src="../assets/img/homePicture.jpg" alt="home background">
-      </parallax>
+      <div class="parallax"><img src="../assets/img/home-picture.jpg" alt="home background"></div>
     </div>
 
     <div class="container">
@@ -31,22 +29,22 @@
               </div>
               <p>
                 You can find information
-                <router-link to="/artist">Here</router-link>
+                <router-link to="/artist">here</router-link>.
               </p>
             </div>
           </div>
           <div class="section">
             <div class="card-panel hoverable">
               <div class="card-image">
-                <h5>New Feature on the Website: Album are available</h5>
+                <h5>New Feature on the website: album playlist are available</h5>
                 <div class="divider"></div>
                 <div class="section">
-                  <h6>We have a surprize for you, Album fonctionality is now working
+                  <h6>We have a surprize for you, album playlist feature is now working
                   </h6>
                 </div>
                 <p>
-                  Go to our new feature
-                  <router-link to="/album">Here</router-link>
+                  Test our new feature
+                  <router-link to="/album">here</router-link>.
                 </p>
               </div>
             </div>
