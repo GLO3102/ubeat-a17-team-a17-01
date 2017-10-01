@@ -1,6 +1,5 @@
-import Parallax from 'vue-parallaxy'
 export default {
-  components: {
-    Parallax
+  mounted() {
+    $('.parallax').parallax();
   }
-}
+};

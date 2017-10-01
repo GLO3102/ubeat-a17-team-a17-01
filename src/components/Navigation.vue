@@ -47,7 +47,7 @@
       </ul>
 
       <ul class="side-nav" id="mobile-menu">
-        <li>
+        <li class="user-badge">
           <router-link to=""><i class="material-icons left">account_circle</i>MJ Fan</router-link>
         </li>
         <li>
