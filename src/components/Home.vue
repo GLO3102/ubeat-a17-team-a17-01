@@ -12,7 +12,9 @@
 
         </div>
       </div>
-      <div class="parallax"><img src="../assets/img/homePicture.jpg" alt="home background"></div>
+      <parallax>
+        <img src="../assets/img/homePicture.jpg" alt="home background">
+      </parallax>
     </div>
 
     <div class="container">

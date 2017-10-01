@@ -1,3 +1,6 @@
-$( window ).on('load', function(){
-  $('.parallax').parallax();
-});
+import Parallax from 'vue-parallaxy'
+export default {
+  components: {
+    Parallax
+  }
+}
