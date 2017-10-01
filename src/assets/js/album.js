@@ -32,12 +32,16 @@ export default {
       }
     } else {
       for (let i = 0; i < tracks.length; i += 1) {
-        tracks[i].addEventListener('click', function MouseClickResponsive() {
+        tracks[i].addEventListener('click', function playTrack() {
           if (this.querySelector('.play-icon-responsive').innerHTML === 'play_circle_outline') {
-            tracks.querySelector('.play-icon-responsive').innerHTML = 'play_circle_outline';
+            if (playingTrackIndex !== -1) {
+              tracks[playingTrackIndex].querySelector('.play-icon-responsive').innerHTML = 'play_circle_outline';
+            }
             this.querySelector('.play-icon-responsive').innerHTML = 'pause_circle_outline';
+            playingTrackIndex = i;
           } else {
             this.querySelector('.play-icon-responsive').innerHTML = 'play_circle_outline';
+            playingTrackIndex = -1;
           }
         });
       }

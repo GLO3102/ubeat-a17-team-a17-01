@@ -4,7 +4,7 @@
 }
 
 .responsive-img.playlist-img {
-  margin: 20px auto;
+  margin: 20px 40px 20px auto;
   max-width: 400px;
   max-height: 400px;
 }
@@ -34,6 +34,10 @@
   display: none;
   position: absolute;
   left: 22px;
+}
+
+.playlist-sub-information {
+  margin: 20px auto 20px 40px;
 }
 
 @media screen and (max-width: 992px) {
