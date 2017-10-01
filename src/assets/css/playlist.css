@@ -40,6 +40,7 @@
   .responsive-img.playlist-img {
     max-width: 300px;
     max-height: 300px;
+    margin: 20px auto;
   }
 
   .pause-icon-responsive {
@@ -57,6 +58,15 @@
   .playlist-information {
     flex-direction: column-reverse;
     text-align: center;
+  }
+
+  .track-title {
+    margin-right: 50px;
+    font-size: 13px;
+  }
+
+  .collection.collection-item.avatar.title {
+    font-size: 13px;
   }
 }
 
