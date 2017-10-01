@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <div class="row playlist-information">
-        <div>
+        <div class="playlist-sub-information">
           <h3>Michael Jackson</h3>
           <div class="playlist-description">
             <p>Full Name : Michael Joseph Jackson</p>
@@ -16,7 +16,7 @@
         <img class="responsive-img playlist-img" src="../assets/img/michael-jackson.jpg">
       </div>
 
-      <div class="section">
+      <div>
         <h5 >Album List</h5>
         <ul class="collection with-header">
           <li class="collection-item">Got to Be There (1972)</li>
