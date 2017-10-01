@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$( window ).on('load', function(){
   let tracks = $('.track');
 
   if (screen.width >= 992) {
