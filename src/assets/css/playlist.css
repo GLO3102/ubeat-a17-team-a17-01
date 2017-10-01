@@ -30,10 +30,26 @@
   color: black;
 }
 
+.play-pause-icon {
+  display: none;
+  position: absolute;
+  left: 22px;
+}
+
 @media screen and (max-width: 992px) {
   .responsive-img.playlist-img {
     max-width: 300px;
     max-height: 300px;
+  }
+
+  .pause-icon-responsive {
+    display: none;
+  }
+
+  .track-title {
+    position: absolute;
+    top: 12px;
+    margin-left: 10px;
   }
 }
 
@@ -44,8 +60,3 @@
   }
 }
 
-.play-pause-icon {
-  display: none;
-  position: absolute;
-  left: 22px;
-}
