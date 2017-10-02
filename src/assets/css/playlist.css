@@ -56,6 +56,10 @@
     top: 12px;
     margin-left: 10px;
   }
+
+  .playlist-sub-information {
+    margin: 0;
+  }
 }
 
 @media screen and (max-width: 600px) {
