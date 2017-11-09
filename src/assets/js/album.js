@@ -1,50 +1,30 @@
 export default {
   mounted() {
-    const tracks = document.getElementsByClassName('track');
-    let playingTrackIndex = -1;
-    if (screen.width >= 992) {
-      for (let i = 0; i < tracks.length; i += 1) {
-        tracks[i].addEventListener('mouseover', function displayPlayIcon() {
-          this.querySelector('.track-number').style.display = 'none';
-          this.querySelector('.play-pause-icon').style.display = 'block';
-        });
+    const tracks = $('.track');
 
-        tracks[i].addEventListener('mouseout', function hidePlayIcon() {
-          if (this.querySelector('.play-pause-icon').innerHTML !== 'pause_circle_outline') {
-            this.querySelector('.track-number').style.display = 'block';
-            this.querySelector('.play-pause-icon').style.display = 'none';
-          }
-        });
-        tracks[i].addEventListener('click', function playPause() {
-          if (this.querySelector('.play-pause-icon').innerHTML === 'play_circle_outline') {
-            if (playingTrackIndex !== -1) {
-              tracks[playingTrackIndex].querySelector('.play-pause-icon').innerHTML = 'play_circle_outline';
-              tracks[playingTrackIndex].querySelector('.play-pause-icon').style.display = 'none';
-              tracks[playingTrackIndex].querySelector('.track-number').style.display = 'block';
-            }
-            this.querySelector('.play-pause-icon').innerHTML = 'pause_circle_outline';
-            playingTrackIndex = i;
-          } else {
-            this.querySelector('.play-pause-icon').innerHTML = 'play_circle_outline';
-            playingTrackIndex = -1;
-          }
-        });
+    tracks.mouseover(function displayPlayIcon() {
+      $(this).find('.track-number').hide();
+      $(this).find('.play-pause-icon').show();
+    });
+
+    tracks.mouseout(function hidePlayIcon() {
+      if ($(this).find('.play-pause-icon').text() !== 'pause_circle_outline') {
+        $(this).find('.track-number').show();
+        $(this).find('.play-pause-icon').hide();
       }
-    } else {
-      for (let i = 0; i < tracks.length; i += 1) {
-        tracks[i].addEventListener('click', function playTrack() {
-          if (this.querySelector('.play-icon-responsive').innerHTML === 'play_circle_outline') {
-            if (playingTrackIndex !== -1) {
-              tracks[playingTrackIndex].querySelector('.play-icon-responsive').innerHTML = 'play_circle_outline';
-            }
-            this.querySelector('.play-icon-responsive').innerHTML = 'pause_circle_outline';
-            playingTrackIndex = i;
-          } else {
-            this.querySelector('.play-icon-responsive').innerHTML = 'play_circle_outline';
-            playingTrackIndex = -1;
-          }
-        });
+    });
+    tracks.click(function playPause() {
+      tracks.find('.play-pause-icon').hide();
+      tracks.find('.track-number').show();
+      if ($(this).find('.play-pause-icon').text() === 'play_circle_outline') {
+        tracks.find('.play-pause-icon').text('play_circle_outline');
+        $(this).find('.play-pause-icon').text('pause_circle_outline');
+      } else {
+        tracks.find('.play-pause-icon').text('play_circle_outline');
+        $(this).find('.play-pause-icon').text('play_circle_outline');
       }
-    }
+      $(this).find('.play-pause-icon').show();
+      $(this).find('.track-number').hide();
+    });
   }
 };
