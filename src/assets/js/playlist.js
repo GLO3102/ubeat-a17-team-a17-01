@@ -1,14 +1,26 @@
+/* eslint-disable import/extensions */
+
+
 import * as api from './api.js'
 
+
 export default {
-  props: ['deletePlaylist', 'ownerEmail', 'playlist'],
+  data: () => ({
+    ownerEmail: 'userteam1@team1.com',
+    playlistId: '',
+    playlist: {}
+  }),
 
   methods: {
-    modifyPlaylistName() {
-      console.log(this.playlist)
-      const playlistId = this.playlist.id;
+
+    async modifyPlaylistName() {
       const name = this.playlist.name;
-      api.modifyPlaylistName(playlistId, name, this.ownerEmail);
+      api.modifyPlaylistName(this.playlist.id, name,  this.ownerEmail);
     }
+
+  },
+
+  async created() {
+    this.playlist = await api.getPlaylist(this.$route.params.id);
   }
-}
+};
