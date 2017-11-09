@@ -24,7 +24,7 @@
         <p class="secondary-content track-time">Time</p>
       </li>
       <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
+        <i class="material-icons play-pause-icon hide-on-med-and-down">play_circle_outline</i>
         <p class="track-number">1</p>
         <i class="material-icons hide-on-large-only play-icon-responsive">play_circle_outline</i>
         <span class="title track-title">Bad</span>

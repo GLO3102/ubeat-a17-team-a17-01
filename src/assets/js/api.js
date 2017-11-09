@@ -1,9 +1,8 @@
 /* eslint-disable import/prefer-default-export,no-console */
 
 // temporary unsecure for dev without token
-const baseUrl = 'http://ubeat.herokuapp.com/unsecure';
-// test email for unsecure dev
-const testMail = 'test@test.com';
+
+const baseUrl = 'https://ubeat.herokuapp.com/unsecure';
 
 // ARTIST SECTION /////////////////////////////////////////////////////////////////////////
 
@@ -26,19 +25,18 @@ export const getArtistAlbums = artistID => fetch(`${baseUrl}/artists/${artistID}
 // PLAYLIST SECTION ////////////////////////////////////////////////////////////////////////
 
 // Create a playlist, returns object with parameters of the playlist
-export const createPlaylist = playlistName => fetch(`${baseUrl}/playlists/`, {
+export const createPlaylist = (playlistName, ownerEmail) => fetch(`${baseUrl}/playlists`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
     name: playlistName,
-    owner: testMail
+    owner: ownerEmail
   })
 })
     .then(response => response.json())
-    .then(playlist =>
-      playlist)
+    .then(json => json)
     .catch(() => {
       console.error('unable to create playlist');
     });
@@ -51,15 +49,34 @@ export const getPlaylist = playlistId => fetch(`${baseUrl}/playlists/${playlistI
     console.error('unable to fetch playlist');
   });
 
+// Get a playlists for one user, returns array of playlists
+export const getPlaylists = ownerEmail => fetch(`${baseUrl}/playlists`)
+  .then(response => response.json())
+  .then((json) => {
+    const playlists = [];
+    json.forEach((playlist) => {
+      const owner = playlist.owner;
+      if (typeof owner !== 'undefined') {
+        if (owner.email === ownerEmail) {
+          playlists.push(playlist);
+        }
+      }
+    });
+    return playlists;
+  })
+  .catch(() => {
+    console.error('unable to fetch playlist');
+  });
+
 // Modify a playlist, returns object with new name and id of playlist
-export const modifyPlaylistName = (playlistId, playlistName) => fetch(`${baseUrl}/playlists/${playlistId}`, {
+export const modifyPlaylistName = (playlistId, playlistName, ownerEmail) => fetch(`${baseUrl}/playlists/${playlistId}`, {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
     name: playlistName,
-    owner: testMail
+    owner: ownerEmail
   })
 })
   .then(response => response.json())
@@ -100,7 +117,7 @@ export const deleteTrackPlaylist = (playlistId, trackId) => fetch(`${baseUrl}/pl
     console.error('unable to delete the track from the playlist');
   });
 
-// Delete the playlist baed on id
+// Delete the playlist based on id
 export const deletePlaylist = playlistId => fetch(`${baseUrl}/playlists/${playlistId}`, {
   method: 'DELETE',
   headers: {
