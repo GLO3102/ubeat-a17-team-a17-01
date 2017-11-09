@@ -12,7 +12,6 @@
             </span>
           </div>
         </div>
-        <img class="responsive-img playlist-img" width="200" src="../assets/img/michael-jackson.jpg">
       </div>
 
       <div>

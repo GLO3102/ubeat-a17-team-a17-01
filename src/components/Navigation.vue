@@ -4,7 +4,7 @@
 
     <div class="nav-wrapper">
 
-      <router-link to="/" class="brand-logo left hide-on-small-only">UBeat</router-link>
+      <router-link to="/" class="brand-logo left hide-on-med-and-down">UBeat</router-link>
       <router-link to="/" class="brand-logo hide-on-med-and-up">UBeat</router-link>
       <a href="#" data-activates="mobile-menu" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
 
@@ -17,6 +17,9 @@
         </li>
         <li>
         <router-link to="/artist"><i class="material-icons left">music_note</i>Artist</router-link>
+        </li>
+        <li>
+          <router-link to="/playlists"><i class="material-icons left">library_music</i>Playlists</router-link>
         </li>
         <li class="hide-on-med-and-down">
           <form>
@@ -58,6 +61,9 @@
         </li>
         <li>
           <router-link to="/artist"><i class="material-icons left">music_note</i>Artist</router-link>
+        </li>
+        <li>
+          <router-link to="/artist"><i class="material-icons left">library_music</i>Playlists</router-link>
         </li>
         <li>
           <router-link to=""><i class="material-icons left">account_box</i>Settings</router-link>
