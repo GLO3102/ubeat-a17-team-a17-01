@@ -5,8 +5,10 @@ export default {
 
   methods: {
     modifyPlaylistName() {
-      const {playlistId, name} = this.playlist;
-      api.modifyPlaylistName(playlistId, name, ownerEmail);
+      console.log(this.playlist)
+      const playlistId = this.playlist.id;
+      const name = this.playlist.name;
+      api.modifyPlaylistName(playlistId, name, this.ownerEmail);
     }
   }
 }

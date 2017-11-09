@@ -2,7 +2,7 @@
 
 // temporary unsecure for dev without token
 
-const baseUrl = 'http://ubeat.herokuapp.com/unsecure';
+const baseUrl = 'https://ubeat.herokuapp.com/unsecure';
 
 // ARTIST SECTION /////////////////////////////////////////////////////////////////////////
 

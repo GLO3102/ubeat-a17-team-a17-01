@@ -23,9 +23,9 @@ export default {
     },
 
     async deletePlaylist(playlistId) {
-      await api.deletePlaylist(playlistId)
-      let index = this.playlists.findIndex((playlist) => playlist.id === playlistId)
-      this.playlists.splice(index, 1)
+      await api.deletePlaylist(playlistId);
+      let index = this.playlists.findIndex((playlist) => playlist.id === playlistId);
+      this.playlists.splice(index, 1);
     }
   },
 

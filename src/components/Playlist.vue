@@ -1,7 +1,8 @@
 <template>
   <div>
-    <textarea v-model="playlist.name" v-on:blur="modifyPlaylistName"></textarea>
-    <button v-on:click="deleteTask(playlist.id)">Delete</button>
+    <input v-model="playlist.name" v-on:blur="modifyPlaylistName">
+    <button v-on:click="deletePlaylist(playlist.id)">Delete</button>
+    <router-link to="/"  tag="button">View</router-link>
   </div>
 </template>
 

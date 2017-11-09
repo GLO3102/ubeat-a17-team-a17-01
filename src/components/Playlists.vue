@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <h5 >My playlists</h5>
-      <textarea v-model="name" placeholder="Enter playlist name"></textarea>
+      <input v-model="name" placeholder="Enter playlist name">
       <button v-on:click="createPlaylist">Create</button>
       <playlist
         v-for="playlist
