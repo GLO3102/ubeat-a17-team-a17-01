@@ -9,9 +9,10 @@
         v-bind:key="playlist.id"
         v-bind:playlist="playlist"
         v-bind:deletePlaylist="deletePlaylist" >
-       </div>
-      <button v-on:click="deletePlaylist(playlist.id)">Delete</button>
-      <button v-on:click="deletePlaylist(playlist.id)">Add track</button>
+        <button v-on:click="deleteTrack(playlist.id, track.id)">Delete</button>
+      </div>
+
+      <button v-on:click="addTrack(playlist.id)">Add track</button>
 
     </div>
   </div>

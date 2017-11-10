@@ -1,4 +1,9 @@
+import login from './authentication';
+
 export default {
+  async created() {
+    await login();
+  },
   mounted() {
     const tracks = $('.track');
 

@@ -2,12 +2,33 @@
 
 // temporary unsecure for dev without token
 
-const baseUrl = 'https://ubeat.herokuapp.com/unsecure';
+import * as Cookies from 'js-cookie';
+
+const baseUrl = 'https://ubeat.herokuapp.com';
+
+// AUTHENTICATION SECTION //////////////////////////////////////////////////////////////////
+
+export const login = loginURLSearchParams => fetch(`${baseUrl}/login`, {
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  method: 'POST',
+  body: loginURLSearchParams
+})
+  .then(response => response.json())
+  .then(json => json.token)
+  .catch(() => {
+    console.error('unable to log in');
+  });
 
 // ARTIST SECTION /////////////////////////////////////////////////////////////////////////
 
 // List details of artist based on ID
-export const getArtist = artistID => fetch(`${baseUrl}/artists/${artistID}`)
+export const getArtist = artistID => fetch(`${baseUrl}/artists/${artistID}`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
     .then(response => response.json())
     .then(json => json.results[0])
     .catch(() => {
@@ -15,7 +36,11 @@ export const getArtist = artistID => fetch(`${baseUrl}/artists/${artistID}`)
     });
 
 // List all albums of  an artist based on ID
-export const getArtistAlbums = artistID => fetch(`${baseUrl}/artists/${artistID}/albums`)
+export const getArtistAlbums = artistID => fetch(`${baseUrl}/artists/${artistID}/albums`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
   .then(response => response.json())
   .then(json => json.results)
   .catch(() => {
@@ -25,14 +50,14 @@ export const getArtistAlbums = artistID => fetch(`${baseUrl}/artists/${artistID}
 // PLAYLIST SECTION ////////////////////////////////////////////////////////////////////////
 
 // Create a playlist, returns object with parameters of the playlist
-export const createPlaylist = (playlistName, ownerEmail) => fetch(`${baseUrl}/playlists`, {
+export const createPlaylist = playlistName => fetch(`${baseUrl}/playlists`, {
   method: 'POST',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: Cookies.get('token')
   },
   body: JSON.stringify({
-    name: playlistName,
-    owner: ownerEmail
+    name: playlistName
   })
 })
     .then(response => response.json())
@@ -42,7 +67,11 @@ export const createPlaylist = (playlistName, ownerEmail) => fetch(`${baseUrl}/pl
     });
 
 // Get a playlist, returns object with parameters of playlist
-export const getPlaylist = playlistId => fetch(`${baseUrl}/playlists/${playlistId}`)
+export const getPlaylist = playlistId => fetch(`${baseUrl}/playlists/${playlistId}`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
   .then(response => response.json())
   .then(json => json)
   .catch(() => {
@@ -50,7 +79,11 @@ export const getPlaylist = playlistId => fetch(`${baseUrl}/playlists/${playlistI
   });
 
 // Get a playlists for one user, returns array of playlists
-export const getPlaylists = ownerEmail => fetch(`${baseUrl}/playlists`)
+export const getPlaylists = ownerEmail => fetch(`${baseUrl}/playlists`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
   .then(response => response.json())
   .then((json) => {
     const playlists = [];
@@ -72,7 +105,8 @@ export const getPlaylists = ownerEmail => fetch(`${baseUrl}/playlists`)
 export const modifyPlaylistName = (playlistId, playlistName, ownerEmail) => fetch(`${baseUrl}/playlists/${playlistId}`, {
   method: 'PUT',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: Cookies.get('token')
   },
   body: JSON.stringify({
     name: playlistName,
@@ -90,7 +124,8 @@ export const modifyPlaylistName = (playlistId, playlistName, ownerEmail) => fetc
 export const addTrackPlaylist = (playlistId, trackObject) => fetch(`${baseUrl}/playlists/${playlistId}/tracks`, {
   method: 'POST',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: Cookies.get('token')
   },
   body: JSON.stringify(
     trackObject
@@ -107,7 +142,8 @@ export const addTrackPlaylist = (playlistId, trackObject) => fetch(`${baseUrl}/p
 export const deleteTrackPlaylist = (playlistId, trackId) => fetch(`${baseUrl}/playlists/${playlistId}/tracks/${trackId}`, {
   method: 'DELETE',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: Cookies.get('token')
   }
 })
   .then(response => response.json())
@@ -121,7 +157,8 @@ export const deleteTrackPlaylist = (playlistId, trackId) => fetch(`${baseUrl}/pl
 export const deletePlaylist = playlistId => fetch(`${baseUrl}/playlists/${playlistId}`, {
   method: 'DELETE',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: Cookies.get('token')
   }
 })
   .then(response => response.json())
@@ -134,7 +171,11 @@ export const deletePlaylist = playlistId => fetch(`${baseUrl}/playlists/${playli
 // ALBUM SECTION ////////////////////////////////////////////////////////////////////////////
 
 // get album details based on id (collectionId)
-export const getAlbum = albumId => fetch(`${baseUrl}/albums/${albumId}`)
+export const getAlbum = albumId => fetch(`${baseUrl}/albums/${albumId}`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
   .then(response => response.json())
   .then(json => json.results[0])
   .catch(() => {
@@ -142,9 +183,14 @@ export const getAlbum = albumId => fetch(`${baseUrl}/albums/${albumId}`)
   });
 
 // get the tracks of an album based on id (collectionId)
-export const getAlbumTracks = albumId => fetch(`${baseUrl}/albums/${albumId}/tracks`)
+export const getAlbumTracks = albumId => fetch(`${baseUrl}/albums/${albumId}/tracks`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
   .then(response => response.json())
   .then(json => json.results)
   .catch(() => {
     console.error('unable to fetch album tracks');
   });
+

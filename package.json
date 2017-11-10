@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "js-cookie": "^2.2.0",
     "materialize-css": "^0.100.2",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0"

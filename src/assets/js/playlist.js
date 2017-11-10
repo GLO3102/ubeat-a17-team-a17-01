@@ -1,8 +1,5 @@
-/* eslint-disable import/extensions */
-
-
-import * as api from './api.js'
-
+import * as api from './api';
+import login from './authentication';
 
 export default {
   data: () => ({
@@ -21,6 +18,7 @@ export default {
   },
 
   async created() {
+    await login();
     this.playlist = await api.getPlaylist(this.$route.params.id);
   }
 };
