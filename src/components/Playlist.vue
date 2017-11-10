@@ -1,8 +1,19 @@
 <template>
-  <div>
-    <input v-model="playlist.name" v-on:blur="modifyPlaylistName">
-    <button v-on:click="deletePlaylist(playlist.id)">Delete</button>
-    <router-link to="/"  tag="button">View</router-link>
+  <div class="container">
+    <div>
+      <input v-model="playlist.name" v-on:blur="modifyPlaylistName">
+      <div
+        v-for="track
+        of
+        playlist.tracks"
+        v-bind:key="playlist.id"
+        v-bind:playlist="playlist"
+        v-bind:deletePlaylist="deletePlaylist" >
+       </div>
+      <button v-on:click="deletePlaylist(playlist.id)">Delete</button>
+      <button v-on:click="deletePlaylist(playlist.id)">Add track</button>
+
+    </div>
   </div>
 </template>
 

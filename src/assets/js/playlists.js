@@ -3,12 +3,7 @@
 
 import * as api from './api.js'
 
-import Playlist from '@/components/Playlist'
-
 export default {
-  components: {
-    Playlist
-  },
   data: () => ({
     name: '',
     ownerEmail: 'userteam1@team1.com',
@@ -26,6 +21,12 @@ export default {
       await api.deletePlaylist(playlistId);
       let index = this.playlists.findIndex((playlist) => playlist.id === playlistId);
       this.playlists.splice(index, 1);
+    },
+
+    async modifyPlaylistName(playlistId) {
+      let index = this.playlists.findIndex((playlist) => playlist.id === playlistId);
+      const name = this.playlists[index].name;
+      api.modifyPlaylistName(playlistId, name,  this.ownerEmail);
     }
   },
 
