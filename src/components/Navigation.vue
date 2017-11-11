@@ -63,7 +63,7 @@
           <router-link to="/artist"><i class="material-icons left">music_note</i>Artist</router-link>
         </li>
         <li>
-          <router-link to="/artist"><i class="material-icons left">library_music</i>Playlists</router-link>
+          <router-link to="/playlists"><i class="material-icons left">library_music</i>Playlists</router-link>
         </li>
         <li>
           <router-link to=""><i class="material-icons left">account_box</i>Settings</router-link>

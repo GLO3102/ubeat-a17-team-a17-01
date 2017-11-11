@@ -4,7 +4,7 @@
 
 import * as Cookies from 'js-cookie';
 
-const baseUrl = 'https://ubeat.herokuapp.com';
+export const baseUrl = 'https://ubeat.herokuapp.com';
 
 // AUTHENTICATION SECTION //////////////////////////////////////////////////////////////////
 

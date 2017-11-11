@@ -1,21 +1,28 @@
 <template>
   <div class="container">
-    <div>
-      <h5 >My playlists</h5>
-      <input v-model="name" placeholder="Enter playlist name">
-      <button v-on:click="createPlaylist">Create</button>
-      <div
-        v-for="playlist
-        of
-        playlists"
-        v-bind:key="playlist.id"
-        v-bind:playlist="playlist"
-        v-bind:deletePlaylist="deletePlaylist" >
-          <input v-model="playlist.name" v-on:blur="modifyPlaylistName(playlist.id)">
-          <button v-on:click="deletePlaylist(playlist.id)">Delete</button>
-          <router-link :to="/playlist/+playlist.id"  tag="button">View</router-link>
+      <h3>My playlists</h3>
+      <div>
+          <div class="input-field inline">
+            <input v-model="name" placeholder="Enter playlist name">
+          </div>
+          <a class="btn-floating btn-medium waves-effect waves-light " v-on:click="createPlaylist"><i class="material-icons">add</i></a>
       </div>
-    </div>
+    <ul class="collection tracks-list">
+      <li class="collection-item playlist-item track valign-wrapper"
+          v-for="playlist
+          of
+          playlists"
+          v-bind:key="playlist.id"
+          v-bind:playlist="playlist"
+          v-bind:deletePlaylist="deletePlaylist" >
+        <i class="material-icons">queue_music</i>
+        <div class="input-field inline">
+          <input v-model="playlist.name" v-on:blur="modifyPlaylistName(playlist.id)">
+        </div>
+        <a v-on:click="deletePlaylist(playlist.id)" class="right btn-floating btn-medium waves-effect waves-light"><i class="material-icons">delete</i></a>
+        <router-link :to="/playlist/+playlist.id"  class="right btn-floating btn-medium waves-effect waves-light" tag="button"><i class="material-icons">view_list</i></router-link>
+      </li>
+    </ul>
   </div>
 </template>
 

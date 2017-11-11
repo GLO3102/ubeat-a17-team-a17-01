@@ -12,5 +12,6 @@ export default async function login() {
   const expirationDate = new Date();
   expirationDate.setTime(expirationDate.getTime() + (60 * 60 * 1000));
   Cookies.set('token', token, { expires: expirationDate });
+  return Cookies.get('token');
 }
 

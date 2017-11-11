@@ -3,6 +3,7 @@
 
 import 'materialize-css';
 import 'materialize-css/dist/css/materialize.css';
+import 'vue2-autocomplete-js/dist/style/vue2-autocomplete.css';
 import Vue from 'vue';
 import App from './App';
 import router from './router';

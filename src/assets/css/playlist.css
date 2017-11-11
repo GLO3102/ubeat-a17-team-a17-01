@@ -1,3 +1,7 @@
+.btn-medium {
+  background-color: #B40404;
+}
+
 .playlist-information {
   display: flex;
   justify-content: space-around;
@@ -9,6 +13,12 @@
   max-height: 400px;
 }
 
+.collection .collection-item.avatar .secondary-content {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+}
+
 .playlist-description {
   margin: 35px;
 }
@@ -16,6 +26,14 @@
 .track-number {
   position: absolute;
   left: 30px;
+}
+
+.collection {
+  border-radius: 8px;
+}
+
+.collection, .collection .collection-item {
+  background-color: #F8E0E0;
 }
 
 .collection.tracks-list .collection-item.avatar.track {
@@ -37,20 +55,50 @@
 }
 
 .collection-item.avatar.track {
-  min-height: inherit;
+  min-height: 50px;
 }
 
+.playlist-item {
+  min-height: 80px;
+}
+
+.playlist-item .input-field {
+  width: 60%;
+  margin-right: 10px;
+}
+
+input#playlist-name {
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+.playlist-item .input-field input {
+  font-size: 20px;
+}
+
+.tracks-list {
+  min-height: 88px;
+}
+
+.autocomplete-wrapper {
+  min-width: 220px;
+}
+
+span.title, .secondary-content {
+  color: #B40404;
+}
+
+#help-playlist {
+  font-style: italic;
+  font-size: 18px;
+  text-align: center;
+  color: #B40404;
+}
 @media screen and (max-width: 992px) {
   .responsive-img.playlist-img {
     max-width: 300px;
     max-height: 300px;
     margin: 20px auto;
-  }
-
-  .track-title {
-    position: absolute;
-    top: 12px;
-    margin-left: 10px;
   }
 
   .playlist-sub-information {
@@ -62,7 +110,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
   .playlist-information {
     flex-direction: column-reverse;
     text-align: center;
@@ -72,11 +120,7 @@
     margin-right: 50px;
   }
 
-  .tracks-list .track{
-    height: 20px;
-  }
-
-  .collection .collection-item.avatar .title {
+  .collection .collection-item.avatar .title, .collection .collection-item.avatar .secondary-content {
     font-size: 13px;
   }
 

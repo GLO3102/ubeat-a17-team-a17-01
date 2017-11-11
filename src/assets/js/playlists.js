@@ -9,6 +9,7 @@ export default {
 
   methods: {
     async createPlaylist() {
+      this.name = (this.name === '') ? 'Untitled' : this.name;
       const newPlaylist = await api.createPlaylist(this.name);
       this.name = '';
       this.playlists.push(newPlaylist);
