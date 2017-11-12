@@ -8,7 +8,6 @@ export default {
   },
   data: () => ({
     ownerEmail: 'userteam1@team1.com',
-    playlistId: '',
     playlist: {},
     searchedTrack: {},
     searchTrackUrl: api.baseUrl+'/search/tracks',
@@ -28,9 +27,7 @@ export default {
     },
 
     async deleteTrack(playlistId, trackId) {
-      await api.deleteTrackPlaylist(playlistId, trackId);
-      const index = this.playlist.tracks.findIndex(track => track.id === trackId);
-      this.playlist.tracks.splice(index, 1);
+      this.playlist = await api.deleteTrackPlaylist(playlistId, trackId);
     },
 
     async modifyPlaylistName() {

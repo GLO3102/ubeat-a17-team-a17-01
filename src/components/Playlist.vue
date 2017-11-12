@@ -27,6 +27,7 @@
           label="artistName"
           :process="processJSON"
           :on-select="selectTrack"
+          initValue=""
           placeholder="Enter track name"
           :customHeaders="{ Authorization: token }">
         </tracksearchbar>
