@@ -16,7 +16,7 @@
           <p>{{track.collectionName}}</p>
           <div class="center secondary-content">
             <p class="track-time">{{displayTrackDuration(track.trackTimeMillis)}}</p>
-            <span v-on:click="deleteTrack(playlist.id, track.trackId)"><i class="material-icons">delete</i></span>
+            <span v-on:click="deleteTrack(playlist.id, track.trackId)" class="delete-icon"><i class="material-icons">delete</i></span>
           </div>
         </li>
       </ul>
@@ -33,7 +33,7 @@
       </div>
       <a class="hide add-track-button btn-floating btn-medium waves-effect waves-light " v-on:click="addTrackPlaylist(playlist.id)"><i class="material-icons">playlist_add</i></a>
       <p>
-        <router-link to="/playlists/"  class="waves-effect waves-light">Go back to my playlists</router-link>
+        <router-link to="/playlists/"  class="right waves-effect waves-light">Go back to my playlists</router-link>
       </p>
     </div>
   </div>
