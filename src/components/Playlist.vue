@@ -20,19 +20,22 @@
           </div>
         </li>
       </ul>
-      <div class="input-field inline">
-        <searchbar
-          :url="searchTrackUrl"
-          anchor="trackName"
-          label="artistName"
-          :process="processJSON"
-          :on-select="selectTrack"
-          initValue=""
-          placeholder="Enter track name"
-          :customHeaders="{ Authorization: token }">
-        </searchbar>
-      </div>
-      <a class="hide add-track-button btn-floating btn-medium waves-effect waves-light" v-on:click="addTrackPlaylist(playlist.id)"><i class="material-icons">playlist_add</i></a>
+      <form>
+        <div class="input-field inline">
+          <searchbar
+            :url="searchTrackUrl"
+            anchor="trackName"
+            label="artistName"
+            :process="processJSON"
+            :on-select="selectTrack"
+            initValue=""
+            :required="true"
+            placeholder="Enter track name"
+            :customHeaders="{ Authorization: token }">
+          </searchbar>
+        </div>
+        <button type="submit" class="hide add-track-button btn-floating btn-medium waves-effect waves-light" v-on:click="addTrackPlaylist(playlist.id)"><i class="material-icons">playlist_add</i></button>
+      </form>
       <p>
         <router-link to="/playlists/"  class="right waves-effect waves-light">Go back to my playlists</router-link>
       </p>

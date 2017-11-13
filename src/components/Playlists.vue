@@ -1,12 +1,12 @@
 <template>
   <div class="container">
       <h3>My playlists</h3>
-      <div>
+       <form>
           <div class="input-field inline">
             <input v-model="name" placeholder="Enter playlist name">
           </div>
-          <a class="btn-floating btn-medium waves-effect waves-light " v-on:click="createPlaylist"><i class="material-icons">add</i></a>
-      </div>
+          <button type="submit" class="btn-floating btn-medium waves-effect waves-light " v-on:click="createPlaylist"><i class="material-icons">add</i></button>
+      </form>
     <ul class="collection tracks-list">
       <li class="collection-item playlist-item track valign-wrapper"
           v-for="playlist

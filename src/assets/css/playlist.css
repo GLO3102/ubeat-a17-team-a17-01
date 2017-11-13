@@ -15,6 +15,7 @@ audio {
 }
 
 .playlist-add {
+  background-color: #B40404;
   margin-left: 10px;
   cursor: pointer;
 }

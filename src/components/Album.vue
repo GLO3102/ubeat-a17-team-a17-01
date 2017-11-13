@@ -19,6 +19,7 @@
     </div>
     <div>
       <h5 >Song List</h5>
+      <form>
       <ul class="collection tracks-list">
         <li class="collection-item avatar">
           <span class="title">Title</span>
@@ -29,7 +30,7 @@
         albumTracks">
           <p class="track-number">{{track.trackNumber}}</p>
           <span class="title">{{track.trackName}}</span>
-          <span v-on:click="addAlbumPlaylist(track)" class="playlist-add"><i class="material-icons">playlist_add</i></span>
+          <button v-on:click="addAlbumPlaylist(track)" class="btn-floating playlist-add"><i class="material-icons">playlist_add</i></button>
           <audio controls="controls">
             Your browser does not support the <code>audio</code> element.
             <source :src="track.previewUrl" type="audio/wav">
@@ -37,18 +38,20 @@
           <p class="secondary-content track-time">{{displayTrackDuration(track.trackTimeMillis)}}</p>
         </li>
       </ul>
-      <a v-on:click="addAlbumPlaylist" class="btn playlist-addall waves-effect waves-light"><i class="material-icons">playlist_add_check</i>Add album to playlist</a>
-      <searchbar
-        :url="searchPlaylistUrl"
-        anchor="name"
-        label="owner"
-        :process="processJSON"
-        :encodeParams="false"
-        :on-select="selectPlaylist"
-        initValue=""
-        placeholder="Enter playlist name"
-        :customHeaders="{ Authorization: token }">
-      </searchbar>
+      <button type="submit" v-on:click="addAlbumPlaylist" class="btn playlist-addall waves-effect waves-light"><i class="material-icons">playlist_add_check</i>Add album to playlist</button>
+        <searchbar
+          :url="searchPlaylistUrl"
+          anchor="name"
+          :required="true"
+          label="owner"
+          :process="processJSON"
+          :encodeParams="false"
+          :on-select="selectPlaylist"
+          initValue=""
+          placeholder="Enter playlist name"
+          :customHeaders="{ Authorization: token }">
+        </searchbar>
+      </form>
     </div>
   </div>
 </template>
