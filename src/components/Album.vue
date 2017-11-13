@@ -2,94 +2,36 @@
   <div class="container">
     <div class="row playlist-information">
       <div class="playlist-sub-information">
-        <h3>Bad</h3>
-        <h5>Michael Jackson</h5>
+        <h3>{{albums.collectionName}}</h3>
+        <h5>{{albums.artistName}}</h5>
         <div class="playlist-description">
-          <p>Genre : Pop</p>
-          <p>Released : Aug 31, 1987</p>
+          <p>Genre : {{albums.primaryGenreName}}</p>
+          <p>Released : {{albums.releaseDate}}</p>
           <span>View in
-            <a class="waves-effect waves-light" target="_blank" href="https://itunes.apple.com/us/album/bad/id559334659">
-              <img width="62" src="../assets/icons/itunes-logo.png" />
+            <a class="waves-effect waves-light" target="_blank" href="https://itunes.apple.com/us/album/bad/id559334659%22%3E
+              <img width="100" src="../assets/icons/itunes-logo.png" />
             </a>
           </span>
-          <p>11 songs</p>
+          <p> {{albums.releaseDate}}</p>
         </div>
       </div>
-      <img class="responsive-img playlist-img" src="../assets/img/album-bad.jpg">
+      <router-link to="/album">
+        <img width="62" v-bind:src="albums.artworkUrl100">
+      </router-link>
     </div>
-
-    <ul class="collection tracks-list">
-      <li class="collection-item avatar">
-        <span class="title track">Title</span>
-        <p class="secondary-content track-time">Time</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">1</p>
-        <span class="title track-title">Bad</span>
-        <p class="secondary-content track-time">4:07</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">2</p>
-        <span class="title track-title">The Way You Make Me Feel</span>
-        <p class="secondary-content track-time">4:58</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">3</p>
-        <span class="title track-title">Speed Demon</span>
-        <p class="secondary-content track-time">4:02</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">4</p>
-        <span class="title track-title">Liberian Girl</span>
-        <p class="secondary-content track-time">3:52</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">5</p>
-        <span class="title track-title">Just Good Friends</span>
-        <p class="secondary-content track-time">4:07</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">6</p>
-        <span class="title track-title">Another Part of Me</span>
-        <p class="secondary-content track-time">3:54</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">7</p>
-        <span class="title track-title">Man In the Mirror</span>
-        <p class="secondary-content track-time">5:18</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">8</p>
-        <span class="title track-title">I Just Can't Stop Loving You</span>
-        <p class="secondary-content track-time">4:13</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">9</p>
-        <span class="title track-title">Dirty Diana</span>
-        <p class="secondary-content track-time">4:40</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">10</p>
-        <span class="title track-title">Smooth Criminal</span>
-        <p class="secondary-content track-time">4:17</p>
-      </li>
-      <li class="collection-item avatar track">
-        <i class="material-icons play-pause-icon">play_circle_outline</i>
-        <p class="track-number">11</p>
-        <span class="title track-title">Leave Me Alone</span>
-        <p class="secondary-content track-time">4:40</p>
-      </li>
-    </ul>
+    <div>
+      <h5 >Song List</h5>
+      <ul class="collection with-header">
+        <li class="collection-item avatar" v-for="track of albumsTracks">
+          <router-link to="/album">
+            <img v-bind:src="album.artworkUrl60" class="circle">
+          </router-link>
+          <span>{{track.trackName}}</span>
+          <span>{{track.trackNumber}}</span>
+          <span>{{track.trackDuration}}</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

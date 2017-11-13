@@ -1,8 +1,19 @@
+/* eslint-disable import/extensions */
+
+import * as api from './api.js';
 import login from './authentication';
 
+const albumId = 559334659;
+
 export default {
+  data: () => ({
+    albums: '',
+    albumsTracks: []
+  }),
   async created() {
     await login();
+    this.albums = await api.getAlbum(albumId);
+    this.albumsTracks = await api.getAlbumTracks(albumId);
   },
   mounted() {
     const tracks = $('.track');
