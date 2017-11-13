@@ -27,18 +27,12 @@ export default {
       if(typeof this.searchedPlaylist.name !== 'undefined') {
         await api.addTrackPlaylist(this.searchedPlaylist.id, track);
       }
-      else {
-        alert('You must look for a playlist below');
-      }
     },
     async addAlbumPlaylist(){
       if(typeof this.searchedPlaylist.name !== 'undefined') {
         for (let track of this.albumTracks) {
           await api.addTrackPlaylist(this.searchedPlaylist.id, track);
         }
-      }
-      else {
-          alert('You must look for a playlist below');
       }
 
     },
