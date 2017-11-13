@@ -1,10 +1,11 @@
 import Autocomplete from 'vue2-autocomplete-js';
 import * as api from './api';
+import * as util from './util';
 import login from './authentication';
 
 export default {
   components: {
-    'tracksearchbar': Autocomplete
+    'searchbar': Autocomplete
   },
   data: () => ({
     ownerEmail: 'userteam1@team1.com',
@@ -35,20 +36,18 @@ export default {
       await api.modifyPlaylistName(this.playlist.id, name,  this.ownerEmail);
     },
 
+    displayTrackDuration(ms) {
+      return util.displayTrackDuration(ms);
+    },
+
     processJSON(json) {
-      return json.results;
+      return json.results.slice(0, 5);
     },
 
     selectTrack(track){
       this.searchedTrack = track;
       $('.add-track-button').removeClass('hide');
     },
-
-    displayTrackDuration(ms){
-      const minutes = Math.floor(ms / 60000);
-      const seconds = ((ms % 60000) / 1000).toFixed(0);
-      return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-    }
 
   },
 

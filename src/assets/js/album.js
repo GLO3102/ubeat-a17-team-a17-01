@@ -1,46 +1,64 @@
 /* eslint-disable import/extensions */
 
+import Autocomplete from 'vue2-autocomplete-js';
 import * as api from './api.js';
+import * as util from './util.js';
 import login from './authentication';
 
+// Temporary for showcase of specific album
 const albumId = 559334659;
 
 export default {
-  data: () => ({
-    albums: '',
-    albumsTracks: []
-  }),
-  async created() {
-    await login();
-    this.albums = await api.getAlbum(albumId);
-    this.albumsTracks = await api.getAlbumTracks(albumId);
+
+  components: {
+    'searchbar': Autocomplete
   },
-  mounted() {
-    const tracks = $('.track');
 
-    tracks.mouseover(function displayPlayIcon() {
-      $(this).find('.track-number').hide();
-      $(this).find('.play-pause-icon').show();
-    });
+  data: () => ({
+    album: '',
+    albumTracks: [],
+    searchedPlaylist: {},
+    searchPlaylistUrl: api.baseUrl+'/playlists',
+    token: ''
+  }),
 
-    tracks.mouseout(function hidePlayIcon() {
-      if ($(this).find('.play-pause-icon').text() !== 'pause_circle_outline') {
-        $(this).find('.track-number').show();
-        $(this).find('.play-pause-icon').hide();
+  methods: {
+    async addTrackPlaylist(track){
+      if(typeof this.searchedPlaylist.name !== 'undefined') {
+        await api.addTrackPlaylist(this.searchedPlaylist.id, track);
       }
-    });
-    tracks.click(function playPause() {
-      tracks.find('.play-pause-icon').hide();
-      tracks.find('.track-number').show();
-      if ($(this).find('.play-pause-icon').text() === 'play_circle_outline') {
-        tracks.find('.play-pause-icon').text('play_circle_outline');
-        $(this).find('.play-pause-icon').text('pause_circle_outline');
-      } else {
-        tracks.find('.play-pause-icon').text('play_circle_outline');
-        $(this).find('.play-pause-icon').text('play_circle_outline');
+      else {
+        alert('You must look for a playlist below');
       }
-      $(this).find('.play-pause-icon').show();
-      $(this).find('.track-number').hide();
-    });
+    },
+    async addAlbumPlaylist(){
+      if(typeof this.searchedPlaylist.name !== 'undefined') {
+        for (let track of this.albumTracks) {
+          await api.addTrackPlaylist(this.searchedPlaylist.id, track);
+        }
+      }
+      else {
+          alert('You must look for a playlist below');
+      }
+
+    },
+    displayTrackDuration(ms) {
+      return util.displayTrackDuration(ms);
+    },
+    parseISOString(isoString) {
+      return util.parseISOString(isoString);
+    },
+    processJSON(json) {
+      return json;
+    },
+    selectPlaylist(playlist){
+      this.searchedPlaylist = playlist;
+    },
+  },
+
+  async created() {
+    this.token = await login();
+    this.album = await api.getAlbum(albumId);
+    this.albumTracks = await api.getAlbumTracks(albumId);
   }
 };

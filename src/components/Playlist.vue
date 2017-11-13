@@ -21,7 +21,7 @@
         </li>
       </ul>
       <div class="input-field inline">
-        <tracksearchbar
+        <searchbar
           :url="searchTrackUrl"
           anchor="trackName"
           label="artistName"
@@ -30,9 +30,9 @@
           initValue=""
           placeholder="Enter track name"
           :customHeaders="{ Authorization: token }">
-        </tracksearchbar>
+        </searchbar>
       </div>
-      <a class="hide add-track-button btn-floating btn-medium waves-effect waves-light " v-on:click="addTrackPlaylist(playlist.id)"><i class="material-icons">playlist_add</i></a>
+      <a class="hide add-track-button btn-floating btn-medium waves-effect waves-light" v-on:click="addTrackPlaylist(playlist.id)"><i class="material-icons">playlist_add</i></a>
       <p>
         <router-link to="/playlists/"  class="right waves-effect waves-light">Go back to my playlists</router-link>
       </p>

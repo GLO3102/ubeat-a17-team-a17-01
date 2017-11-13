@@ -2,35 +2,53 @@
   <div class="container">
     <div class="row playlist-information">
       <div class="playlist-sub-information">
-        <h3>{{albums.collectionName}}</h3>
-        <h5>{{albums.artistName}}</h5>
+        <h3>{{album.collectionName}}</h3>
+        <h5>{{album.artistName}}</h5>
         <div class="playlist-description">
-          <p>Genre : {{albums.primaryGenreName}}</p>
-          <p>Released : {{albums.releaseDate}}</p>
+          <p>Genre: {{album.primaryGenreName}}</p>
+          <p>{{album.trackCount}} songs</p>
+          <p>Released: {{parseISOString(album.releaseDate)}}</p>
           <span>View in
-            <a class="waves-effect waves-light" target="_blank" href="https://itunes.apple.com/us/album/bad/id559334659%22%3E
+            <a class="waves-effect waves-light" target="_blank" :href="album.collectionViewUrl">
               <img width="100" src="../assets/icons/itunes-logo.png" />
             </a>
           </span>
-          <p> {{albums.releaseDate}}</p>
         </div>
       </div>
-      <router-link to="/album">
-        <img width="62" v-bind:src="albums.artworkUrl100">
-      </router-link>
+      <img class="responsive-img playlist-img" :src="album.artworkUrl100">
     </div>
     <div>
       <h5 >Song List</h5>
-      <ul class="collection with-header">
-        <li class="collection-item avatar" v-for="track of albumsTracks">
-          <router-link to="/album">
-            <img v-bind:src="album.artworkUrl60" class="circle">
-          </router-link>
-          <span>{{track.trackName}}</span>
-          <span>{{track.trackNumber}}</span>
-          <span>{{track.trackDuration}}</span>
+      <ul class="collection tracks-list">
+        <li class="collection-item avatar">
+          <span class="title">Title</span>
+          <p class="secondary-content track-time">Time</p>
+        </li>
+        <li class="collection-item avatar track" v-for="track
+        of
+        albumTracks">
+          <p class="track-number">{{track.trackNumber}}</p>
+          <span class="title">{{track.trackName}}</span>
+          <span v-on:click="addAlbumPlaylist(track)" class="playlist-add"><i class="material-icons">playlist_add</i></span>
+          <audio controls="controls">
+            Your browser does not support the <code>audio</code> element.
+            <source :src="track.previewUrl" type="audio/wav">
+          </audio>
+          <p class="secondary-content track-time">{{displayTrackDuration(track.trackTimeMillis)}}</p>
         </li>
       </ul>
+      <a v-on:click="addAlbumPlaylist" class="btn playlist-addall waves-effect waves-light"><i class="material-icons">playlist_add_check</i>Add album to playlist</a>
+      <searchbar
+        :url="searchPlaylistUrl"
+        anchor="name"
+        label="owner"
+        :process="processJSON"
+        :encodeParams="false"
+        :on-select="selectPlaylist"
+        initValue=""
+        placeholder="Enter playlist name"
+        :customHeaders="{ Authorization: token }">
+      </searchbar>
     </div>
   </div>
 </template>
