@@ -17,7 +17,9 @@
       <div>
         <h5 >Album List</h5>
         <ul class="collection with-header">
-          <li class="collection-item avatar" v-for="album of albumList">
+          <li class="collection-item avatar" v-for="album
+          of
+          albumList">
             <router-link to="/album">
               <img v-bind:src="album.artworkUrl60" class="circle">
             </router-link>

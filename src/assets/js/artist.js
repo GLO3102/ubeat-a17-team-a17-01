@@ -7,11 +7,13 @@ import login from './authentication.js';
 const artistId = 32940;
 
 export default {
+
   data: () => ({
     artist: '',
     url: '',
     albumList: []
   }),
+
   async created() {
     await login();
     this.artist = await api.getArtist(artistId);

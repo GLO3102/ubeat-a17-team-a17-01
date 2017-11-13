@@ -1,9 +1,30 @@
+audio {
+  vertical-align: top;
+  margin-left: 10px;
+  width: 100%;
+
+}
+
 .btn-medium {
   background-color: #B40404;
   margin-left: 10px;
 }
 
-span.title, #help-playlist, .collection .collection-item.avatar .secondary-content {
+.playlist-addall {
+  background-color: #B40404;
+}
+
+.playlist-add {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+.collection .collection-item.avatar .title {
+  vertical-align: top;
+}
+
+span.title, #help-playlist, .collection .collection-item.avatar .secondary-content, .playlist-add {
   color: #B40404;
 }
 
@@ -52,8 +73,10 @@ input#playlist-name, .playlist-item .input-field input{
   margin: 20px auto;
 }
 
-.playlist-img {
+img.responsive-img.playlist-img {
   margin: 20px auto;
+  width: 100%;
+  height: auto;
   max-width: 300px;
   max-height: 300px;
 }
@@ -150,10 +173,4 @@ input#playlist-name {
   .collection .collection-item.avatar .title, .collection .collection-item.avatar .secondary-content {
     font-size: 16px;
   }
-
-  /*.playlist-img {
-    max-width: 300px;
-    max-height: 300px;
-    margin: 20px auto;
-  }*/
 }
