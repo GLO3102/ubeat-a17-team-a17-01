@@ -3,7 +3,11 @@
     <div class="row playlist-information">
       <div class="playlist-sub-information">
         <h3>{{album.collectionName}}</h3>
-        <h5>{{album.artistName}}</h5>
+        <h5>
+          <router-link v-bind:to="/artist/ + album.artistId">
+            {{album.artistName}}
+          </router-link>
+        </h5>
         <div class="playlist-description">
           <p>Genre: {{album.primaryGenreName}}</p>
           <p>{{album.trackCount}} songs</p>

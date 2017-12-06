@@ -20,7 +20,7 @@
           <li class="collection-item avatar" v-for="album
           of
           albumList">
-            <router-link to="/album">
+            <router-link v-bind:to="/album/ + album.collectionId">
               <img v-bind:src="album.artworkUrl60" class="circle">
             </router-link>
             <span class="title">{{album.collectionName}}</span>

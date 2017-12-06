@@ -29,7 +29,7 @@
               </div>
               <p>
                 You can find information
-                <router-link to="/artist">here</router-link>.
+                <router-link to="/artist/32940">here</router-link>.
               </p>
             </div>
           </div>

@@ -5,8 +5,6 @@ import * as api from './api.js';
 import * as util from './util.js';
 import login from './authentication';
 
-// Temporary for showcase of specific album
-const albumId = 559334659;
 
 export default {
 
@@ -52,7 +50,7 @@ export default {
 
   async created() {
     this.token = await login();
-    this.album = await api.getAlbum(albumId);
-    this.albumTracks = await api.getAlbumTracks(albumId);
+    this.album = await api.getAlbum(this.$route.params.id);
+    this.albumTracks = await api.getAlbumTracks(this.$route.params.id);
   }
 };

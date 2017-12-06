@@ -13,10 +13,10 @@
         <router-link to="/"><i class="material-icons left">home</i>Home</router-link>
         </li>
         <li>
-        <router-link to="/album"><i class="material-icons left">album</i>Album</router-link>
+        <router-link to="/album/559334659"><i class="material-icons left">album</i>Album</router-link>
         </li>
         <li>
-        <router-link to="/artist"><i class="material-icons left">music_note</i>Artist</router-link>
+        <router-link to="/artist/32940"><i class="material-icons left">music_note</i>Artist</router-link>
         </li>
         <li>
           <router-link to="/playlists"><i class="material-icons left">library_music</i>Playlists</router-link>
