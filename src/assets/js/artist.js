@@ -3,8 +3,6 @@
 import * as api from './api.js';
 import login from './authentication.js';
 
-// Temporary for showcase of specific artist
-const artistId = 32940;
 
 export default {
 
@@ -16,8 +14,8 @@ export default {
 
   async created() {
     await login();
-    this.artist = await api.getArtist(artistId);
-    this.albumList = await api.getArtistAlbums(artistId);
+    this.artist = await api.getArtist(this.$route.params.id);
+    this.albumList = await api.getArtistAlbums(this.$route.params.id);
   }
 };
 
