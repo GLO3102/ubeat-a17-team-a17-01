@@ -14,4 +14,3 @@ export default async function login() {
   Cookies.set('token', token, { expires: expirationDate });
   return Cookies.get('token');
 }
-

@@ -49,6 +49,18 @@
               </div>
             </div>
           </div>
+          <div class="section">
+            <div class="card-panel hoverable">
+              <div class="card-image">
+                <h5>Possibility to create your own Playlist !</h5>
+                <div class="divider"></div>
+                <p>
+                  Create a playlist
+                  <router-link to="/playlists">here</router-link>.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
