@@ -1,7 +1,7 @@
+
 import * as Cookies from 'js-cookie';
 import Autocomplete from 'vue2-autocomplete-js';
 import * as api from './api';
-
 
 $( window ).on('load', function(){
   $(".button-collapse").sideNav();
@@ -17,6 +17,9 @@ export default {
     searchUrl: `${api.baseUrl}/search/`,
     token: Cookies.get('token')
   }),
+  mounted() {
+    $('.parallax').parallax();
+  },
 
   methods: {
     processJSON(json) {
@@ -41,6 +44,11 @@ export default {
       } else {
         this.$router.push({ path: `/album/${result.collectionId}` });
       }
+    },
+    async logout() {
+      await api.logout();
+      Cookies.remove('token');
+      location.replace('http://localhost:8080/#/Connection');
     }
   }
 };

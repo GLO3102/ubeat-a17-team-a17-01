@@ -49,7 +49,7 @@
             <router-link to=""><i class="material-icons left">account_box</i>Settings</router-link>
           </li>
           <li>
-            <router-link to=""><i class="material-icons left">exit_to_app</i>Logout</router-link>
+            <button v-on:click="logout()" ><i class="material-icons left">exit_to_app</i>Logout</button>
           </li>
         </ul>
 
