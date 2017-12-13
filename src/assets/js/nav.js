@@ -2,6 +2,7 @@
 import * as Cookies from 'js-cookie';
 import Autocomplete from 'vue2-autocomplete-js';
 import * as api from './api';
+import * as auth from './authentication';
 
 $( window ).on('load', function(){
   $(".button-collapse").sideNav();
@@ -13,8 +14,9 @@ export default {
     navsearchbar: Autocomplete
   },
   data: () => ({
-    ownerEmail: 'userteam1@team1.com',
+    ownerEmail: Cookies.get('email'),
     searchUrl: `${api.baseUrl}/search/`,
+    name: Cookies.get('name'),
     token: Cookies.get('token')
   }),
   mounted() {
@@ -46,9 +48,7 @@ export default {
       }
     },
     async logout() {
-      await api.logout();
-      Cookies.remove('token');
-      location.replace('http://localhost:8080/#/Connection');
+      await auth.logout();
     }
   }
 };

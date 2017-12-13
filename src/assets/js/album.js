@@ -1,9 +1,9 @@
 /* eslint-disable import/extensions */
 
 import Autocomplete from 'vue2-autocomplete-js';
+import Cookies from 'js-cookie';
 import * as api from './api.js';
 import * as util from './util.js';
-import login from './authentication';
 
 
 export default {
@@ -17,7 +17,7 @@ export default {
     albumTracks: [],
     searchedPlaylist: {},
     searchPlaylistUrl: api.baseUrl+'/playlists',
-    token: ''
+    token: Cookies.get('token')
   }),
 
   methods: {
@@ -49,7 +49,6 @@ export default {
   },
 
   async created() {
-    this.token = await login();
     this.album = await api.getAlbum(this.$route.params.id);
     this.albumTracks = await api.getAlbumTracks(this.$route.params.id);
   }

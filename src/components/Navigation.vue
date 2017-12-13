@@ -37,7 +37,7 @@
           </form>
         </li>
         <li>
-          <i class="material-icons left">account_circle</i>MJ Fan
+          <i class="material-icons left">account_circle</i>{{name}}
         </li>
         <li>
           <a class="dropdown-button" href="#!" data-activates="dropdown-account-settings"><i class="material-icons right">arrow_drop_down</i>
@@ -57,7 +57,7 @@
 
       <ul class="side-nav" id="mobile-menu">
         <li class="user-badge">
-          <router-link to=""><i class="material-icons left">account_circle</i>MJ Fan</router-link>
+          <router-link to=""><i class="material-icons left">account_circle</i>{{name}}</router-link>
         </li>
         <li>
           <router-link to="/"><i class="material-icons left">home</i>Home</router-link>

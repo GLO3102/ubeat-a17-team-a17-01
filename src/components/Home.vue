@@ -36,7 +36,7 @@
           <div class="section">
             <div class="card-panel hoverable">
               <div class="card-image">
-                <h5>New Feature on the website: album playlist are available</h5>
+                <h5>New feature on the website: album playlist are available</h5>
                 <div class="divider"></div>
                 <div class="section">
                   <h6>We have a surprize for you, album playlist feature is now working

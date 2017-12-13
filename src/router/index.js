@@ -5,7 +5,9 @@ import Album from '@/components/Album';
 import Artist from '@/components/Artist';
 import Playlists from '@/components/Playlists';
 import Playlist from '@/components/Playlist';
-import Connection from '@/components/Connection';
+import Login from '@/components/Login';
+import Register from '@/components/Register';
+import { requireAuth, requireNoAuth } from '../assets/js/authentication';
 
 
 Vue.use(Router);
@@ -16,27 +18,39 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home,
+      beforeEnter: requireAuth
     }, {
       path: '/artist/:id',
       name: 'Artist',
-      component: Artist
+      component: Artist,
+      beforeEnter: requireAuth
     }, {
       path: '/album/:id',
       name: 'Album',
-      component: Album
+      component: Album,
+      beforeEnter: requireAuth
     }, {
       path: '/playlists',
       name: 'Playlists',
-      component: Playlists
+      component: Playlists,
+      beforeEnter: requireAuth
     }, {
       path: '/playlist/:id',
       name: 'Playlist',
-      component: Playlist
+      component: Playlist,
+      beforeEnter: requireAuth
     },
     {
-      path: '/connection',
-      name: 'connection',
-      component: Connection
+      path: '/login',
+      name: 'login',
+      component: Login,
+      beforeEnter: requireNoAuth
     },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
+      beforeEnter: requireNoAuth
+    }
   ],
 });
