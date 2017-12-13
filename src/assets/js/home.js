@@ -5,13 +5,5 @@ export default {
   mounted() {
     $('.parallax').parallax();
   },
-
-  methods: {
-    async logout() {
-      await api.logout();
-      Cookies.remove('token');
-      alert('test');
-    }
-  }
 };
 

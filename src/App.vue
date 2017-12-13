@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav-menu></nav-menu>
+    <nav-menu v-if="['login', 'register'].indexOf($route.name) == -1"></nav-menu>
     <router-view></router-view>
   </div>
 </template>

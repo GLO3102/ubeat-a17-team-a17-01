@@ -17,10 +17,9 @@ export const login = loginURLSearchParams => fetch(`${baseUrl}/login`, {
   body: loginURLSearchParams
 })
   .then(response => response.json())
-  .then(json => json.token)
-  .catch(() => {
-    console.error('unable to log in');
-  });
+  .then(json => json)
+  .catch(() => console.error('unable to log in')
+  );
 
 export const logout = () => fetch(`${baseUrl}/login`, {
   headers: {
@@ -32,17 +31,13 @@ export const logout = () => fetch(`${baseUrl}/login`, {
     console.error('unable to logout');
   });
 
-export const registerNewUser = (username, emailAddress, userPassword) => fetch('https://ubeat.herokuapp.com/signup', {
+export const register = registerURLSearchParams => fetch('https://ubeat.herokuapp.com/signup', {
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Access-Control-Allow-Origin': '*'
   },
   method: 'POST',
-  body: JSON.stringify({
-    name: username,
-    email: emailAddress,
-    password: userPassword
-  })
+  body: registerURLSearchParams
 })
   .then(response => response.json())
   .then(json => json)

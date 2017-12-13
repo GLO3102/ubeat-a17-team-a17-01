@@ -49,3 +49,15 @@ nav .input-field input[type=search]:focus {
 .dropdown-content li>a, .dropdown-content li>span {
   color: #B40404;
 }
+
+.autocomplete-wrapper input.autocomplete-input {
+  margin: 0 ;
+}
+.autocomplete-list li {
+  z-index: 100;
+}
+
+.autocomplete-list li {
+  width: 100%;
+  z-index: 100;
+}

@@ -1,5 +1,5 @@
+import Cookies from 'js-cookie'
 import * as api from './api';
-import login from './authentication';
 
 export default {
   data: () => ({
@@ -29,7 +29,6 @@ export default {
   },
 
   async created() {
-    await login();
-    this.playlists = await api.getPlaylists('userteam1@team1.com');
+    this.playlists = await api.getPlaylists(Cookies.get('email'));
   }
 };

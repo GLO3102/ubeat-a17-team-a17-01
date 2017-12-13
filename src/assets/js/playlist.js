@@ -1,18 +1,18 @@
 import Autocomplete from 'vue2-autocomplete-js';
+import Cookies from 'js-cookie';
 import * as api from './api';
 import * as util from './util';
-import login from './authentication';
 
 export default {
   components: {
     'searchbar': Autocomplete
   },
   data: () => ({
-    ownerEmail: 'userteam1@team1.com',
+    ownerEmail: Cookies.get('email'),
     playlist: {},
     searchedTrack: {},
     searchTrackUrl: api.baseUrl+'/search/tracks',
-    token: ''
+    token: Cookies.get('token')
   }),
 
   methods: {
@@ -52,7 +52,6 @@ export default {
   },
 
   async created() {
-    this.token = await login();
     this.playlist = await api.getPlaylist(this.$route.params.id);
   },
 
