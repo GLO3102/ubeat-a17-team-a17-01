@@ -7,6 +7,7 @@ import Playlists from '@/components/Playlists';
 import Playlist from '@/components/Playlist';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
+import Profile from '@/components/Profile';
 import { requireAuth, requireNoAuth } from '../assets/js/authentication';
 
 
@@ -51,6 +52,16 @@ export default new Router({
       name: 'register',
       component: Register,
       beforeEnter: requireNoAuth
-    }
+    }, {
+      path: '/my-profile',
+      name: 'MyProfile',
+      component: Profile,
+      beforeEnter: requireAuth
+    }, {
+      path: '/profile/:id',
+      name: 'Profile',
+      component: Profile,
+      beforeEnter: requireAuth
+    },
   ],
 });

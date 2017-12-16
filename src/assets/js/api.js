@@ -221,3 +221,43 @@ export const getAlbumTracks = albumId => fetch(`${baseUrl}/albums/${albumId}/tra
     console.error('unable to fetch album tracks');
   });
 
+
+// PROFILE SECTION ////////////////////////////////////////////////////////////////////////////
+
+// get the token stored in the cookies, and show its informations (logged user name and email)
+export const getTokenInfo = () => fetch(`${baseUrl}/tokenInfo`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to fetch token info');
+  });
+
+
+// get the profile of a user
+export const getProfile = userId => fetch(`${baseUrl}/users/${userId}`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to fetch profile');
+  });
+
+// delete a friend from the following list
+export const deleteFriend = friendId => fetch(`${baseUrl}/follow/${friendId}`, {
+  method: 'DELETE',
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to fetch profile');
+  });
