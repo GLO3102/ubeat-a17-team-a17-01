@@ -16,7 +16,7 @@
           <p>{{track.collectionName}}</p>
           <div class="center secondary-content">
             <p class="track-time">{{displayTrackDuration(track.trackTimeMillis)}}</p>
-            <span v-on:click="deleteTrack(playlist.id, track.trackId)" class="delete-icon"><i class="material-icons">delete</i></span>
+            <span v-if="isMyPlaylist()" v-on:click="deleteTrack(playlist.id, track.trackId)" class="delete-icon"><i class="material-icons">delete</i></span>
           </div>
         </li>
       </ul>

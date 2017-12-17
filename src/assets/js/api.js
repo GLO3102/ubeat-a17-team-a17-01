@@ -16,10 +16,15 @@ export const login = loginURLSearchParams => fetch(`${baseUrl}/login`, {
   method: 'POST',
   body: loginURLSearchParams
 })
-  .then(response => response.json())
-  .then(json => json)
-  .catch(() => console.error('unable to log in')
-  );
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else if (response.status === 401) {
+      return 'Your email and/or password are incorrect. Please try again.';
+    }
+    return response.message;
+  })
+  .then(json => json);
 
 export const logout = () => fetch(`${baseUrl}/login`, {
   headers: {
@@ -31,7 +36,7 @@ export const logout = () => fetch(`${baseUrl}/login`, {
     console.error('unable to logout');
   });
 
-export const register = registerURLSearchParams => fetch('https://ubeat.herokuapp.com/signup', {
+export const register = async registerURLSearchParams => fetch(`${baseUrl}/signup`, {
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Access-Control-Allow-Origin': '*'
@@ -39,11 +44,15 @@ export const register = registerURLSearchParams => fetch('https://ubeat.herokuap
   method: 'POST',
   body: registerURLSearchParams
 })
-  .then(response => response.json())
-  .then(json => json)
-  .catch(() => {
-    console.error('unable to register');
-  });
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else if (response.status === 401) {
+      return 'This email has already been registered. Please try another one.';
+    }
+    return response.message;
+  })
+  .then(json => json);
 
 
 // ARTIST SECTION /////////////////////////////////////////////////////////////////////////
@@ -234,4 +243,72 @@ export const getSearchResults = parameter => fetch(`${baseUrl}/search?q=${parame
   .then(json => json.results)
   .catch(() => {
     console.error('unable to fetch album tracks');
+  });
+// PROFILE SECTION ////////////////////////////////////////////////////////////////////////////
+
+// get the token stored in the cookies, and show its informations (logged user name and email)
+export const getTokenInfo = () => fetch(`${baseUrl}/tokenInfo`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to fetch token info');
+});
+
+
+// get the profile of a user
+export const getProfile = userId => fetch(`${baseUrl}/users/${userId}`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to fetch profile');
+  });
+
+// delete a friend from the following list
+export const deleteFriend = friendId => fetch(`${baseUrl}/follow/${friendId}`, {
+  method: 'DELETE',
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to delete this profile');
+  });
+
+// get all the users
+export const getUsers = () => fetch(`${baseUrl}/users`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to fetch profile');
+  });
+
+// follow a user
+export const followUser = friendId => fetch(`${baseUrl}/follow`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: Cookies.get('token')
+  },
+  body: JSON.stringify({
+    id: friendId,
+  })
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to follow this user');
   });

@@ -41,7 +41,7 @@
           <router-link to="/playlists"><i class="material-icons left">library_music</i>Playlists</router-link>
         </li>
         <li>
-          <i class="material-icons left">account_circle</i>{{name}}
+          <router-link to="/my-profile"><i class="material-icons left">account_circle</i>{{name}}</router-link>
         </li>
         <li>
           <a class="dropdown-button" href="#!" data-activates="dropdown-account-settings"><i class="material-icons right">arrow_drop_down</i>

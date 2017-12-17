@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 
+import * as Materialize from 'materialize-css';
 import * as auth from './authentication';
-
 
 export default {
 
@@ -16,13 +16,16 @@ export default {
       const loginURLSearchParams = new URLSearchParams();
       loginURLSearchParams.append('email', this.email);
       loginURLSearchParams.append('password',this.password);
-      const user = await auth.login(loginURLSearchParams);
-      if(typeof user === 'undefined') {
-        this.message = 'Authentication in has failed, please retry.'
-      }
-      else
-        return true;
+      await auth.login(loginURLSearchParams).then((user) => {
+        if (typeof user.token === 'undefined') {
+          const toastContent = $(`<span>${user}</span>`);
+          Materialize.toast(toastContent, 4000, 'red');
+        }
+      });
     }
-  }
+  },
+  mounted() {
+    $('.parallax').parallax();
+  },
 };
 

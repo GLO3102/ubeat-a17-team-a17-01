@@ -5,20 +5,20 @@ import * as util from './util';
 
 export default {
   components: {
-    'searchbar': Autocomplete
+    searchbar: Autocomplete
   },
   data: () => ({
     ownerEmail: Cookies.get('email'),
     playlist: {},
     searchedTrack: {},
-    searchTrackUrl: api.baseUrl+'/search/tracks',
+    searchTrackUrl: `${api.baseUrl}/search/tracks`,
     token: Cookies.get('token')
   }),
 
   methods: {
 
     async addTrackPlaylist(playlistId) {
-      if(!this.playlist.tracks.includes(this.searchedTrack)) {
+      if (!this.playlist.tracks.includes(this.searchedTrack)) {
         await api.addTrackPlaylist(playlistId, this.searchedTrack);
         this.playlist.tracks.push(this.searchedTrack);
         this.searchedTrack = {};
@@ -33,7 +33,7 @@ export default {
 
     async modifyPlaylistName() {
       const name = this.playlist.name;
-      await api.modifyPlaylistName(this.playlist.id, name,  this.ownerEmail);
+      await api.modifyPlaylistName(this.playlist.id, name, this.ownerEmail);
     },
 
     displayTrackDuration(ms) {
@@ -44,11 +44,18 @@ export default {
       return json.results.slice(0, 5);
     },
 
-    selectTrack(track){
+    selectTrack(track) {
       this.searchedTrack = track;
       $('.add-track-button').removeClass('hide');
     },
 
+    isMyPlaylist() {
+      if (this.playlist.owner.email === Cookies.get('email')) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
 
   async created() {
@@ -62,11 +69,10 @@ export default {
 
     const observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
-        if($('.collection.tracks-list li').length > 0) {
+        if ($('.collection.tracks-list li').length > 0) {
           helpPlaylist.hide();
-        }
-        else {
-          helpPlaylist.removeClass("hide");
+        } else {
+          helpPlaylist.removeClass('hide');
           $('#help-playlist').show();
         }
       });
@@ -79,6 +85,5 @@ export default {
     };
 
     observer.observe(target, config);
-
   }
 };

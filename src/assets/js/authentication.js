@@ -31,7 +31,7 @@ export function requireNoAuth(to, from, next) {
 
 export async function login(loginURLSearchParams) {
   const user = await api.login(loginURLSearchParams);
-  if (typeof user !== 'undefined') {
+  if (typeof user.token !== 'undefined') {
     Cookies.set('token', user.token, { expires: 365 });
     Cookies.set('email', user.email, { expires: 365 });
     Cookies.set('name', user.name, { expires: 365 });

@@ -8,8 +8,8 @@ import Playlist from '@/components/Playlist';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
 import Search from '@/components/Search';
+import Profile from '@/components/Profile';
 import { requireAuth, requireNoAuth } from '../assets/js/authentication';
-
 
 Vue.use(Router);
 
@@ -58,6 +58,16 @@ export default new Router({
       name: 'register',
       component: Register,
       beforeEnter: requireNoAuth
-    }
+    }, {
+      path: '/my-profile',
+      name: 'MyProfile',
+      component: Profile,
+      beforeEnter: requireAuth
+    }, {
+      path: '/profile/:id',
+      name: 'Profile',
+      component: Profile,
+      beforeEnter: requireAuth
+    },
   ],
 });
