@@ -31,7 +31,7 @@ export const logout = () => fetch(`${baseUrl}/login`, {
     console.error('unable to logout');
   });
 
-export const register = registerURLSearchParams => fetch('https://ubeat.herokuapp.com/signup', {
+export const register = registerURLSearchParams => fetch(`${baseUrl}/signup`, {
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Access-Control-Allow-Origin': '*'
@@ -259,5 +259,34 @@ export const deleteFriend = friendId => fetch(`${baseUrl}/follow/${friendId}`, {
   .then(response => response.json())
   .then(json => json)
   .catch(() => {
+    console.error('Unable to delete this profile');
+  });
+
+// get all the users
+export const getUsers = () => fetch(`${baseUrl}/users`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
     console.error('Unable to fetch profile');
+  });
+
+// follow a user
+export const followUser = friendId => fetch(`${baseUrl}/follow`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: Cookies.get('token')
+  },
+  body: JSON.stringify({
+    id: friendId,
+  })
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('Unable to follow this user');
   });

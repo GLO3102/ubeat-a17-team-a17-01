@@ -12,8 +12,7 @@ export default {
     playlist: {},
     searchedTrack: {},
     searchTrackUrl: `${api.baseUrl}/search/tracks`,
-    token: Cookies.get('token'),
-    myPlaylist: ''
+    token: Cookies.get('token')
   }),
 
   methods: {
@@ -50,15 +49,17 @@ export default {
       $('.add-track-button').removeClass('hide');
     },
 
+    isMyPlaylist() {
+      if (this.playlist.owner.email === Cookies.get('email')) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
 
   async created() {
     this.playlist = await api.getPlaylist(this.$route.params.id);
-    if (this.playlist.owner.email === Cookies.get('email')) {
-      this.myPlaylist = true;
-    } else {
-      this.myPlaylist = false;
-    }
   },
 
   async mounted() {

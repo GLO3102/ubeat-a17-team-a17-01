@@ -7,7 +7,7 @@
         <div class="section">
           <div class="card-panel hoverable">
             <h5>Register to Ubeat !</h5>
-            <form>
+            <form v-on:submit="register">
               <input type="email" v-model="email" placeholder="Email" required>
               <input type="text" v-model="firstName" placeholder="First Name" required>
               <input type="text" v-model="lastName" placeholder="Last Name" required>
@@ -15,7 +15,7 @@
               <span>{{ message }}</span>
               <br>
               <router-link to="/login">I already have an account</router-link>
-              <button v-on:click="register"><i class="material-icons right">description</i>Confirm</button>
+              <button><i class="material-icons right">description</i>Confirm</button>
             </form>
           </div>
         </div>
