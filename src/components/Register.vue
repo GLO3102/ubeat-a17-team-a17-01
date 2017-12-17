@@ -12,10 +12,9 @@
               <input type="text" v-model="firstName" placeholder="First Name" required>
               <input type="text" v-model="lastName" placeholder="Last Name" required>
               <input type="password" v-model="password" placeholder="Password" required>
-              <span>{{ message }}</span>
               <br>
-              <router-link to="/login">I already have an account</router-link>
-              <button><i class="material-icons right">description</i>Confirm</button>
+              <router-link to="/login" class="waves-effect waves-light btn red right">Return</router-link>
+              <button class="waves-effect waves-light btn red"><i class="material-icons right">description</i>Confirm</button>
             </form>
           </div>
         </div>
