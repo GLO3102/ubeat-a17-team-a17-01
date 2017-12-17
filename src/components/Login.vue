@@ -25,8 +25,8 @@
                 <input type="password" v-model="password" placeholder="Password" required>
                 <span> {{message}} </span>
                 <br/>
-                <router-link to="/register">Register</router-link>
-                <button type="submit"><i class="material-icons right">input</i>Log in</button>
+                <router-link to="/register" class="waves-effect waves-light btn red right">Register</router-link>
+                <button type="submit" class="waves-effect waves-light btn red"><i class="material-icons right">input</i>Log in</button>
               </form>
             </div>
         </div>

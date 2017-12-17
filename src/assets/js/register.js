@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 
+import * as Materialize from 'materialize-css';
 import * as auth from './authentication.js';
-
 
 export default {
 
@@ -9,7 +9,6 @@ export default {
     email: '',
     firstName: '',
     lastName: '',
-    message: '',
     password: '',
   }),
 
@@ -18,14 +17,20 @@ export default {
     async register() {
       const registerURLSearchParams = new URLSearchParams();
       registerURLSearchParams.append('email', this.email);
-      registerURLSearchParams.append('name', this.firstName + ' ' + this.lastName);
-      registerURLSearchParams.append('password',this.password);
-      const newUser = await auth.register(registerURLSearchParams);
-      if (typeof newUser === 'undefined') {
-        this.message = 'Registration has failed, please retry.';
-      } else {
-        this.message = 'You\'have successfully registered. You can log in now.';
-      }
+      registerURLSearchParams.append('name', `${this.firstName} ${this.lastName}`);
+      registerURLSearchParams.append('password', this.password);
+      await auth.register(registerURLSearchParams).then((newUser) => {
+        if (typeof newUser.name === 'undefined') {
+          const toastContent = $(`<span>${newUser}</span>`);
+          Materialize.toast(toastContent, 4000, 'red');
+        } else {
+          const toastContent = $('<span>You have successfully registered. You can log in now.</span>');
+          Materialize.toast(toastContent, 3000, 'green');
+          setTimeout(() => {
+            router.push('/login');
+          }, 3000);
+        }
+      });
     }
   }
 
