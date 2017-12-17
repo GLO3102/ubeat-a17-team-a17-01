@@ -7,9 +7,9 @@ import Playlists from '@/components/Playlists';
 import Playlist from '@/components/Playlist';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
+import Search from '@/components/Search';
 import Profile from '@/components/Profile';
 import { requireAuth, requireNoAuth } from '../assets/js/authentication';
-
 
 Vue.use(Router);
 
@@ -39,6 +39,12 @@ export default new Router({
       path: '/playlist/:id',
       name: 'Playlist',
       component: Playlist,
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search,
       beforeEnter: requireAuth
     },
     {

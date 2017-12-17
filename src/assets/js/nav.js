@@ -40,6 +40,11 @@ export default {
       }
       return result;
     },
+    searchElement() {
+      const querySearch = document.getElementById('navsearch').value;
+      this.$router.push({ path: '/search', query: { result: querySearch } });
+    },
+
     selectPage(result) {
       if (result.wrapperType === 'artist') {
         this.$router.push({ path: `/artist/${result.artistId}` });

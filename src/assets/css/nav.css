@@ -61,3 +61,8 @@ nav .input-field input[type=search]:focus {
   width: 100%;
   z-index: 100;
 }
+.autocomplete ul {
+
+  z-index: 100
+
+}

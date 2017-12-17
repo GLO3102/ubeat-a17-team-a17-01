@@ -9,6 +9,25 @@
       <a href="#" data-activates="mobile-menu" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
 
       <ul id="nav-mobile" class="right hide-on-small-only">
+        <li class="hide-on-med-and-down">
+          <form>
+            <navsearchbar
+              :url="searchUrl"
+              anchor="name"
+              label="wrapperType"
+              :process="processJSON"
+              :on-select="selectPage"
+              initValue=""
+              :required="true"
+              id="navsearch"
+              placeholder="Enter track name"
+              :customHeaders="{ Authorization: token }">
+            </navsearchbar>
+          </form>
+        </li>
+        <li>
+          <button id="search-button" class="waves-effect waves-light btn" v-on:click="searchElement()">Search</button>
+        </li>
         <li>
         <router-link to="/"><i class="material-icons left">home</i>Home</router-link>
         </li>
@@ -20,21 +39,6 @@
         </li>
         <li>
           <router-link to="/playlists"><i class="material-icons left">library_music</i>Playlists</router-link>
-        </li>
-        <li class="hide-on-med-and-down">
-          <form>
-            <navsearchbar
-              :url="searchUrl"
-              anchor="name"
-              label="wrapperType"
-              :process="processJSON"
-              :on-select="selectPage"
-              initValue=""
-              :required="true"
-              placeholder="Enter track name"
-              :customHeaders="{ Authorization: token }">
-            </navsearchbar>
-          </form>
         </li>
         <li>
           <router-link to="/my-profile"><i class="material-icons left">account_circle</i>{{name}}</router-link>
@@ -96,6 +100,7 @@
   </nav>
 
 </template>
+
 
 <style src="@/assets/css/nav.css">
 </style>
