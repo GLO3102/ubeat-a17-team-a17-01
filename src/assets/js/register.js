@@ -22,10 +22,10 @@ export default {
       registerURLSearchParams.append('password',this.password);
       const newUser = await auth.register(registerURLSearchParams);
       if (typeof newUser === 'undefined') {
-        this.message = 'Registration has failed, please retry.'
+        this.message = 'Registration has failed, please retry.';
+      } else {
+        this.message = 'You\'have successfully registered. You can log in now.';
       }
-      else
-        this.message = 'You\'have successfully registered. You can log in now.'
     }
   }
 
