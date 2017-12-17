@@ -152,6 +152,7 @@ export const addTrackPlaylist = (playlistId, trackObject) => fetch(`${baseUrl}/p
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
     Authorization: Cookies.get('token')
   },
   body: JSON.stringify(
@@ -221,3 +222,16 @@ export const getAlbumTracks = albumId => fetch(`${baseUrl}/albums/${albumId}/tra
     console.error('unable to fetch album tracks');
   });
 
+// SEARCH SECTION //////////////////////////////////////////////////////////////////////////
+
+// search based on query parameters
+export const getSearchResults = parameter => fetch(`${baseUrl}/search?q=${parameter}&limit=25`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json.results)
+  .catch(() => {
+    console.error('unable to fetch album tracks');
+  });
