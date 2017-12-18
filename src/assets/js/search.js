@@ -27,8 +27,9 @@ export default {
     async reloadPage() {
       this.search = this.$route.query.result;
       this.param = encodeURIComponent(this.$route.query.result);
-      this.searchResults = await api.getSearchResults(this.param);
-      this.processResults();
+      this.searchResults = await api.getSearchResults(this.param).then(() => {
+        this.processResults();
+      });
     },
     processResults() {
       const arrayLength = this.searchResults.length;
@@ -53,7 +54,9 @@ export default {
       this.searchedPlaylist = playlist;
     },
     processJSON(json) {
-      return json;
+      const name = $('#searchPlaylist').val();
+      console.log(name);
+      return json.filter(result => result.name.includes(name));
     },
     async addTrackPlaylist(track) {
       if (typeof this.searchedPlaylist.name !== 'undefined') {
@@ -74,7 +77,8 @@ export default {
   async created() {
     this.search = this.$route.query.result;
     this.param = encodeURIComponent(this.$route.query.result);
-    this.searchResults = await api.getSearchResults(this.param);
-    this.processResults();
+    this.searchResults = await api.getSearchResults(this.param).then(() => {
+      this.processResults();
+    });
   }
 };

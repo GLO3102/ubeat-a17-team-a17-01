@@ -41,7 +41,7 @@ export default {
     },
 
     processJSON(json) {
-      return json.results.slice(0, 5);
+      return json.results.slice(0,5);
     },
 
     selectTrack(track) {

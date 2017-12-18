@@ -44,6 +44,7 @@
       </ul>
       <button type="submit" v-on:click="addAlbumPlaylist" class="btn playlist-addall waves-effect waves-light"><i class="material-icons">playlist_add_check</i>Add album to playlist</button>
         <searchbar
+          id="searchPlaylist"
           :url="searchPlaylistUrl"
           anchor="name"
           :required="true"

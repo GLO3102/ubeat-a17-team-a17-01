@@ -46,7 +46,9 @@ export default {
       return util.parseISOString(isoString);
     },
     processJSON(json) {
-      return json;
+      const name = $('#searchPlaylist').val();
+      console.log(name);
+      return json.filter(result => result.name.includes(name));
     },
     selectPlaylist(playlist) {
       this.searchedPlaylist = playlist;

@@ -7,6 +7,7 @@
     </div>
     <p>Choose playlist to add tracks or albums to :</p>
     <searchbar
+      id="searchPlaylist"
       :url="searchPlaylistUrl"
       anchor="name"
       :required="true"
