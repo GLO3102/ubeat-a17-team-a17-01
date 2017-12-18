@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 
 import * as Materialize from 'materialize-css';
+import router from '../../router/index';
 import * as auth from './authentication.js';
 
 export default {

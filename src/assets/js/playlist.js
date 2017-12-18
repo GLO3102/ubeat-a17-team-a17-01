@@ -41,7 +41,7 @@ export default {
     },
 
     processJSON(json) {
-      return json.results.slice(0,5);
+      return json.results.slice(0, 5);
     },
 
     selectTrack(track) {
@@ -52,9 +52,8 @@ export default {
     isMyPlaylist() {
       if (this.playlist.owner.email === Cookies.get('email')) {
         return true;
-      } else {
-        return false;
       }
+      return false;
     }
   },
 
@@ -67,8 +66,8 @@ export default {
 
     const helpPlaylist = $('#help-playlist');
 
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach(() => {
         if ($('.collection.tracks-list li').length > 0) {
           helpPlaylist.hide();
         } else {

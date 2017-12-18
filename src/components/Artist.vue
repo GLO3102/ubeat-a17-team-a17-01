@@ -23,8 +23,8 @@
           albumList">
             <router-link v-bind:to="/album/ + album.collectionId">
               <img v-bind:src="album.artworkUrl60" class="circle">
+              <span class="title">{{album.collectionName}}</span>
             </router-link>
-            <span class="title">{{album.collectionName}}</span>
             <p>{{album.releaseDate.substring(0,4)}}</p>
           </li>
         </ul>

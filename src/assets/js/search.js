@@ -1,7 +1,7 @@
 
 import Autocomplete from 'vue2-autocomplete-js';
 import Cookies from 'js-cookie';
-import * as api from './api.js';
+import * as api from './api';
 
 
 export default {
@@ -19,7 +19,7 @@ export default {
 
   }),
   watch: {
-    '$route' (to, from) {
+    $route() {
       this.reloadPage();
     }
   },
@@ -33,7 +33,7 @@ export default {
     processResults() {
       const arrayLength = this.searchResults.length;
 
-      for (let i = 0; i < arrayLength; i++) {
+      for (let i = 0; i < arrayLength; i += 1) {
         if (this.searchResults[i].wrapperType === 'artist') {
           this.searchResults[i].artist = true;
           this.searchResults[i].album = false;
@@ -54,7 +54,6 @@ export default {
     },
     processJSON(json) {
       const name = $('#searchPlaylist').val();
-      console.log(name);
       return json.filter(result => result.name.includes(name));
     },
     async addTrackPlaylist(track) {
@@ -66,7 +65,7 @@ export default {
       if (typeof this.searchedPlaylist.name !== 'undefined') {
         const albumTracks = await api.getAlbumTracks(album.collectionId);
         const arrayLength = albumTracks.length;
-        for (let i = 0; i < arrayLength; i++) {
+        for (let i = 0; i < arrayLength; i += 1) {
           api.addTrackPlaylist(albumTracks[i].trackName);
         }
       }

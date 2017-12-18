@@ -4,9 +4,9 @@ import Autocomplete from 'vue2-autocomplete-js';
 import * as api from './api';
 import * as auth from './authentication';
 
-$( window ).on('load', function(){
-  $(".button-collapse").sideNav();
-  $(".dropdown-button").dropdown();
+$(window).on('load', () => {
+  $('.button-collapse').sideNav();
+  $('.dropdown-button').dropdown();
 });
 
 export default {
@@ -28,7 +28,7 @@ export default {
       const result = json.results.slice(0, 5);
       const arrayLength = result.length;
 
-      for (let i = 0; i < arrayLength; i++) {
+      for (let i = 0; i < arrayLength; i += 1) {
         if (result[i].wrapperType === 'artist') {
           result[i].name = result[i].artistName;
         } else if (result[i].wrapperType === 'track') {
