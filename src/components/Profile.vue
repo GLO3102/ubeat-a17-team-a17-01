@@ -34,9 +34,7 @@
             v-bind:key="playlist.id"
             v-bind:playlist="playlist">
           <i class="material-icons">queue_music</i>
-          <div class="input-field inline">
-            <input v-model="playlist.name" v-on:blur="modifyPlaylistName(playlist.id)">
-          </div>
+          <p class="input-field inline">{{ playlist.name }}</p>
           <router-link :to="/playlist/+playlist.id"  class="right btn-floating btn-medium waves-effect waves-light" tag="button"><i class="material-icons">view_list</i></router-link>
         </li>
       </ul>

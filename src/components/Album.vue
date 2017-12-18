@@ -34,7 +34,7 @@
         albumTracks">
           <p class="track-number">{{track.trackNumber}}</p>
           <span class="title">{{track.trackName}}</span>
-          <button v-on:click="addAlbumPlaylist(track)" class="btn-floating playlist-add"><i class="material-icons">playlist_add</i></button>
+          <button v-on:click="addTrackPlaylist(track)" class="btn-floating playlist-add"><i class="material-icons">playlist_add</i></button>
           <audio controls="controls">
             Your browser does not support the <code>audio</code> element.
             <source :src="track.previewUrl" type="audio/wav">

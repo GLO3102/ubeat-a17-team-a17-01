@@ -37,7 +37,7 @@
         <button type="submit" class="hide add-track-button btn-floating btn-medium waves-effect waves-light" v-on:click="addTrackPlaylist(playlist.id)"><i class="material-icons">playlist_add</i></button>
       </form>
       <p>
-        <router-link to="/playlists/"  class="right waves-effect waves-light">Go back to my playlists</router-link>
+        <router-link to="/playlists/"  class="waves-effect waves-light btn red right">Go back to my playlists</router-link>
       </p>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 import * as api from './api';
 
 export default {
@@ -24,7 +24,7 @@ export default {
     async modifyPlaylistName(playlistId) {
       const index = this.playlists.findIndex(playlist => playlist.id === playlistId);
       const name = this.playlists[index].name;
-      api.modifyPlaylistName(playlistId, name,  this.ownerEmail);
+      api.modifyPlaylistName(playlistId, name, this.ownerEmail);
     }
   },
 

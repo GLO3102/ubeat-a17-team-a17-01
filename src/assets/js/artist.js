@@ -10,7 +10,7 @@ export default {
     albumList: []
   }),
   watch: {
-    '$route' (to, from) {
+    $route() {
       this.reloadPage();
     }
   },

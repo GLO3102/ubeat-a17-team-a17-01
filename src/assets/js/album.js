@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
 
+import * as Materialize from 'materialize-css';
 import Autocomplete from 'vue2-autocomplete-js';
 import Cookies from 'js-cookie';
 import * as api from './api.js';
@@ -21,22 +22,33 @@ export default {
   }),
 
   watch: {
-    '$route' (to, from) {
-      this.reloadPage();
+    $route() {
+      this.created();
     }
   },
 
   methods: {
     async addTrackPlaylist(track) {
       if (typeof this.searchedPlaylist.name !== 'undefined') {
-        await api.addTrackPlaylist(this.searchedPlaylist.id, track);
+        await api.addTrackPlaylist(this.searchedPlaylist.id, track).then(() => {
+          console.log(track);
+          if (typeof track.trackName !== 'undefined') {
+            const toastContent = $(`<span>"${track.trackName}" has been added to ${this.searchedPlaylist.name}</span>`);
+            Materialize.toast(toastContent, 4000, 'green');
+          }
+        });
       }
     },
     async addAlbumPlaylist() {
       if (typeof this.searchedPlaylist.name !== 'undefined') {
-        for (const track of this.albumTracks) {
-          await api.addTrackPlaylist(this.searchedPlaylist.id, track);
-        }
+        this.albumTracks.forEach((track) => {
+          api.addTrackPlaylist(this.searchedPlaylist.id, track).then((playlist) => {
+            if (typeof playlist.name !== 'undefined') {
+              const toastContent = $(`<span>"${track.trackName}" has been added to ${playlist.name}</span>`);
+              Materialize.toast(toastContent, 4000, 'green');
+            }
+          });
+        });
       }
     },
     displayTrackDuration(ms) {
@@ -47,15 +59,10 @@ export default {
     },
     processJSON(json) {
       const name = $('#searchPlaylist').val();
-      console.log(name);
       return json.filter(result => result.name.includes(name));
     },
     selectPlaylist(playlist) {
       this.searchedPlaylist = playlist;
-    },
-    async reloadPage() {
-      this.album = await api.getAlbum(this.$route.params.id);
-      this.albumTracks = await api.getAlbumTracks(this.$route.params.id);
     }
   },
 
