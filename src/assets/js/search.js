@@ -13,6 +13,7 @@ export default {
     search: '',
     param: '',
     searchResults: [],
+    searchUsers: [],
     searchedPlaylist: {},
     searchPlaylistUrl: `${api.baseUrl}/playlists`,
     token: Cookies.get('token')
@@ -28,6 +29,7 @@ export default {
       this.search = this.$route.query.result;
       this.param = encodeURIComponent(this.$route.query.result);
       this.searchResults = await api.getSearchResults(this.param);
+      this.searchUsers = await api.getSearchUsers(this.param);
       this.processResults();
     },
     processResults() {
@@ -77,6 +79,7 @@ export default {
     this.search = this.$route.query.result;
     this.param = encodeURIComponent(this.$route.query.result);
     this.searchResults = await api.getSearchResults(this.param);
+    this.searchUsers = await api.getSearchUsers(this.param);
     this.processResults();
   }
 };
