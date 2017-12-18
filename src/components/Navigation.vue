@@ -50,7 +50,7 @@
 
         <ul id="dropdown-account-settings" class="dropdown-content">
           <li>
-            <router-link to=""><i class="material-icons left">account_box</i>Settings</router-link>
+            <router-link to="/my-profile"><i class="material-icons left">account_box</i>Settings</router-link>
           </li>
           <li>
             <button v-on:click="logout()" ><i class="material-icons left">exit_to_app</i>Logout</button>

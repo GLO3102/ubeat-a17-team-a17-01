@@ -256,7 +256,7 @@ export const getTokenInfo = () => fetch(`${baseUrl}/tokenInfo`, {
   .then(json => json)
   .catch(() => {
     console.error('Unable to fetch token info');
-});
+  });
 
 
 // get the profile of a user
