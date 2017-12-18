@@ -64,13 +64,18 @@
       <ul class="collection tracks-list">
         <li class="collection-item avatar track" v-for="user
         of
-        searchUsers">
-          <span class="title">
-            {{user.name}}
-          </span>
-          <p>
-            {{user.email}}
-          </p>
+        searchUsers"
+            v-bind:key="user.id">
+          <i class="material-icons left">person</i>
+          <router-link :to="/profile/+user.id" class="black-text left">
+            <span class="title">
+              {{user.name}}
+            </span>
+            <p>
+              {{user.email}}
+            </p>
+          </router-link>
+          <a v-if="isMyFriend(user.email)" class="waves-effect waves-light btn red right" v-on:click="addFriend(user.email)">Follow</a>
         </li>
       </ul>
     </form>

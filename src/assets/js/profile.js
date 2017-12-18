@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-/* eslint-disable no-underscore-dangle */
 
 import * as api from './api.js';
 
@@ -70,7 +69,7 @@ export default {
       });
     },
     async addFriend(friendEmail) {
-      this.getFriendId(friendEmail).then(async (friendId) => {
+      this.getFriendId(friendEmail).then( async (friendId) => {
         this.profile = await api.followUser(friendId);
       });
       this.myFriend = true;

@@ -1,9 +1,10 @@
+/* eslint-disable no-underscore-dangle */
+
 import * as Materialize from 'materialize-css';
 import Autocomplete from 'vue2-autocomplete-js';
 import Cookies from 'js-cookie';
 import * as api from './api';
-import * as Playlist from './playlist';
-
+import router from '../../router/index';
 
 export default {
   components: {
@@ -76,18 +77,48 @@ export default {
           const arrayLength = albumTracks.length;
           for (let i = 0; i < arrayLength; i += 1) {
             api.addTrackPlaylist(albumTracks[i].trackName);
-            const toastContent = $(`<span>"${albumTracks[i].trackName}" has been added to "${playlist.name}"</span>`);
+            const toastContent = $(`<span>"${albumTracks[i].trackName}" has been added to "${this.searchedPlaylist.name}"</span>`);
             Materialize.toast(toastContent, 4000, 'green');
           }
         });
       }
+    },
+    async isMyFriend(friendEmail) {
+      const token = await api.getTokenInfo();
+      const loggedUser = await api.getProfile(token.id);
+      loggedUser.following.forEach((follower) => {
+        if (friendEmail === follower.email) {
+          this.myFriendId = follower._id;
+          return true;
+        }
+        return false;
+      });
+    },
+    async getFriendId(friendEmail) {
+      const users = await api.getUsers();
+      let friendId;
+      users.forEach((user) => {
+        if (user.email === friendEmail) {
+          friendId = user.id;
+        }
+      });
+      return friendId;
+    },
+    async addFriend(friendEmail) {
+      this.getFriendId(friendEmail).then(async (friendId) => {
+        await api.followUser(friendId);
+        router.push(`/profile/${friendId}`);
+      });
+    },
+    async initialize() {
+      this.search = this.$route.query.result;
+      this.param = encodeURIComponent(this.$route.query.result);
+      this.searchResults = await api.getSearchResults(this.param);
+      this.searchUsers = await api.getSearchUsers(this.param);
+      this.processResults();
     }
   },
   async created() {
-    this.search = this.$route.query.result;
-    this.param = encodeURIComponent(this.$route.query.result);
-    this.searchResults = await api.getSearchResults(this.param);
-    this.searchUsers = await api.getSearchUsers(this.param);
-    this.processResults();
+    this.initialize();
   }
 };
