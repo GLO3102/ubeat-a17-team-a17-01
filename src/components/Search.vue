@@ -55,6 +55,25 @@
         </li>
       </ul>
     </form>
+    <h5>
+      <p>
+        Recherche d'utilisateurs :
+      </p>
+    </h5>
+    <form>
+      <ul class="collection tracks-list">
+        <li class="collection-item avatar track" v-for="user
+        of
+        searchUsers">
+          <span class="title">
+            {{user.name}}
+          </span>
+          <p>
+            {{user.email}}
+          </p>
+        </li>
+      </ul>
+    </form>
   </div>
 </template>
 

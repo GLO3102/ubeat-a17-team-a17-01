@@ -252,7 +252,18 @@ export const getSearchResults = parameter => fetch(`${baseUrl}/search?q=${parame
   .then(response => response.json())
   .then(json => json.results)
   .catch(() => {
-    console.error('unable to fetch album tracks');
+    console.error('unable to fetch search results');
+  });
+
+export const getSearchUsers = parameter => fetch(`${baseUrl}/search/users?q=${parameter}`, {
+  headers: {
+    Authorization: Cookies.get('token')
+  }
+})
+  .then(response => response.json())
+  .then(json => json)
+  .catch(() => {
+    console.error('unable to fetch users');
   });
 // PROFILE SECTION ////////////////////////////////////////////////////////////////////////////
 
