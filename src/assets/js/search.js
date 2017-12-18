@@ -27,9 +27,8 @@ export default {
     async reloadPage() {
       this.search = this.$route.query.result;
       this.param = encodeURIComponent(this.$route.query.result);
-      this.searchResults = await api.getSearchResults(this.param).then(() => {
-        this.processResults();
-      });
+      this.searchResults = await api.getSearchResults(this.param);
+      this.processResults();
     },
     processResults() {
       const arrayLength = this.searchResults.length;
@@ -77,8 +76,7 @@ export default {
   async created() {
     this.search = this.$route.query.result;
     this.param = encodeURIComponent(this.$route.query.result);
-    this.searchResults = await api.getSearchResults(this.param).then(() => {
-      this.processResults();
-    });
+    this.searchResults = await api.getSearchResults(this.param);
+    this.processResults();
   }
 };
