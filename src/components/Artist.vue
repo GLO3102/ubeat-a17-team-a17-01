@@ -12,6 +12,7 @@
             </span>
           </div>
         </div>
+        <img class="responsive-img playlist-img" :src="artistImage">
       </div>
 
       <div>

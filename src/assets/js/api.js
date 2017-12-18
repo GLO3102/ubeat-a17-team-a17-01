@@ -70,6 +70,16 @@ export const getArtist = artistID => fetch(`${baseUrl}/artists/${artistID}`, {
       console.error('unable to fetch artist');
     });
 
+export const getArtistPage = artistID => fetch(`https://itunes.apple.com/artist/id${artistID}`, {
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  }
+})
+  .then(response => response.text())
+  .catch(() => {
+    console.error('unable to fetch artist');
+  });
+
 // List all albums of  an artist based on ID
 export const getArtistAlbums = artistID => fetch(`${baseUrl}/artists/${artistID}/albums`, {
   headers: {
@@ -257,7 +267,6 @@ export const getTokenInfo = () => fetch(`${baseUrl}/tokenInfo`, {
   .catch(() => {
     console.error('Unable to fetch token info');
   });
-
 
 // get the profile of a user
 export const getProfile = userId => fetch(`${baseUrl}/users/${userId}`, {
