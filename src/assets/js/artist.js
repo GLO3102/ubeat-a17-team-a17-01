@@ -18,11 +18,12 @@ export default {
   methods: {
     async reloadPage() {
       this.artist = await api.getArtist(this.$route.params.id);
+      const artistPage = await api.getArtistPage(this.$route.params.id);
       this.albumList = await api.getArtistAlbums(this.$route.params.id);
       const myExtrator = new Extrator();
-      myExtrator.extract(artistPage, ( err, data ) => {
-        if( err ){
-          throw(err);
+      myExtrator.extract(artistPage, (err, data) => {
+        if (err) {
+          throw (err);
         } else {
           this.artistImage = data.meta['twitter:image'];
         }
@@ -34,9 +35,9 @@ export default {
     this.artist = await api.getArtist(this.$route.params.id);
     const artistPage = await api.getArtistPage(this.$route.params.id);
     const myExtrator = new Extrator();
-    myExtrator.extract(artistPage, ( err, data ) => {
-      if( err ){
-        throw(err);
+    myExtrator.extract(artistPage, (err, data) => {
+      if (err) {
+        throw (err);
       } else {
         this.artistImage = data.meta['twitter:image'];
       }

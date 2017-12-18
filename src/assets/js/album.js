@@ -31,9 +31,8 @@ export default {
     async addTrackPlaylist(track) {
       if (typeof this.searchedPlaylist.name !== 'undefined') {
         await api.addTrackPlaylist(this.searchedPlaylist.id, track).then(() => {
-          console.log(track);
           if (typeof track.trackName !== 'undefined') {
-            const toastContent = $(`<span>"${track.trackName}" has been added to ${this.searchedPlaylist.name}</span>`);
+            const toastContent = $(`<span>"${track.trackName}" has been added to "${this.searchedPlaylist.name}"</span>`);
             Materialize.toast(toastContent, 4000, 'green');
           }
         });
@@ -44,7 +43,7 @@ export default {
         this.albumTracks.forEach((track) => {
           api.addTrackPlaylist(this.searchedPlaylist.id, track).then((playlist) => {
             if (typeof playlist.name !== 'undefined') {
-              const toastContent = $(`<span>"${track.trackName}" has been added to ${playlist.name}</span>`);
+              const toastContent = $(`<span>"${track.trackName}" has been added to "${playlist.name}"</span>`);
               Materialize.toast(toastContent, 4000, 'green');
             }
           });

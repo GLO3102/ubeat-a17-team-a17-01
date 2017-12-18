@@ -1,7 +1,8 @@
-
+import * as Materialize from 'materialize-css';
 import Autocomplete from 'vue2-autocomplete-js';
 import Cookies from 'js-cookie';
 import * as api from './api';
+import * as Playlist from './playlist';
 
 
 export default {
@@ -60,20 +61,28 @@ export default {
     },
     async addTrackPlaylist(track) {
       if (typeof this.searchedPlaylist.name !== 'undefined') {
-        await api.addTrackPlaylist(this.searchedPlaylist.id, track);
+        await api.addTrackPlaylist(this.searchedPlaylist.id, track).then(() => {
+          this.searchedPlaylist.tracks.push(track);
+          const toastContent = $(`<span>"${track.trackName}" has been added to "${this.searchedPlaylist.name}"</span>`);
+          Materialize.toast(toastContent, 4000, 'green');
+          $('.autocomplete-input').val('');
+          this.searchedPlaylist = {};
+        });
       }
     },
     async addAlbumPlaylist(album) {
       if (typeof this.searchedPlaylist.name !== 'undefined') {
-        const albumTracks = await api.getAlbumTracks(album.collectionId);
-        const arrayLength = albumTracks.length;
-        for (let i = 0; i < arrayLength; i += 1) {
-          api.addTrackPlaylist(albumTracks[i].trackName);
-        }
+        await api.getAlbumTracks(album.collectionId).then((albumTracks) => {
+          const arrayLength = albumTracks.length;
+          for (let i = 0; i < arrayLength; i += 1) {
+            api.addTrackPlaylist(albumTracks[i].trackName);
+            const toastContent = $(`<span>"${albumTracks[i].trackName}" has been added to "${playlist.name}"</span>`);
+            Materialize.toast(toastContent, 4000, 'green');
+          }
+        });
       }
     }
   },
-
   async created() {
     this.search = this.$route.query.result;
     this.param = encodeURIComponent(this.$route.query.result);

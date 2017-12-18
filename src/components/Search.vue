@@ -6,20 +6,20 @@
       </div>
     </div>
     <p>Choose playlist to add tracks or albums to :</p>
-    <searchbar
-      id="searchPlaylist"
-      :url="searchPlaylistUrl"
-      anchor="name"
-      :required="true"
-      label="owner"
-      :process="processJSON"
-      :encodeParams="false"
-      :on-select="selectPlaylist"
-      initValue=""
-      placeholder="Enter playlist name"
-      :customHeaders="{ Authorization: token }">
-    </searchbar>
     <form>
+      <searchbar
+        id="searchPlaylist"
+        :url="searchPlaylistUrl"
+        anchor="name"
+        :required="true"
+        label="owner"
+        :process="processJSON"
+        :encodeParams="false"
+        :on-select="selectPlaylist"
+        initValue=""
+        placeholder="Enter playlist name"
+        :customHeaders="{ Authorization: token }">
+      </searchbar>
       <ul class="collection tracks-list">
         <li class="collection-item avatar track" v-for="result
         of
